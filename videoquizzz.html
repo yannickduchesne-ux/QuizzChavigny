@@ -55,91 +55,80 @@ h1 .c1{color:var(--gold);}h1 .c2{color:var(--accent2);}
 .section-count{font-size:.74rem;color:var(--text-muted);margin-left:6px;}
 .quiz-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(258px,1fr));gap:10px;}
 .quiz-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:16px;transition:border-color .2s,transform .15s;display:flex;flex-direction:column;gap:8px;}
-.quiz-card:hover{border-color:rgba(91,106,240,.45);transform:translateY(-2px);}
+.quiz-card:hover{border-color:rgba(240,192,48,.4);transform:translateY(-2px);}
 .quiz-card-title{font-family:'Syne',sans-serif;font-weight:700;font-size:.88rem;line-height:1.3;}
 .quiz-card-meta{display:flex;gap:5px;flex-wrap:wrap;}
 .meta-pill{font-size:.68rem;padding:2px 7px;border-radius:999px;font-weight:500;background:var(--surface2);color:var(--text-muted);}
-.meta-pill.blue{background:rgba(91,106,240,.13);color:var(--accent);}
-.meta-pill.green{background:rgba(62,207,142,.13);color:var(--accent3);}
+.meta-pill.blue{background:rgba(126,184,255,.13);color:var(--accent2);}
+.meta-pill.green{background:rgba(74,175,125,.13);color:var(--accent3);}
 .meta-pill.orange{background:rgba(240,160,48,.13);color:var(--accent4);}
+.meta-pill.gold{background:rgba(240,192,48,.15);color:var(--gold);}
 .quiz-card-actions{display:flex;gap:5px;flex-wrap:wrap;padding-top:4px;border-top:1px solid var(--border);}
 .empty-list{grid-column:1/-1;text-align:center;padding:40px 20px;background:var(--surface);border:1px dashed var(--border);border-radius:var(--radius);color:var(--text-muted);}
 .empty-list .ei{font-size:1.9rem;opacity:.3;margin-bottom:8px;}
 .empty-list p{font-size:.82rem;line-height:1.6;}
 
 /* BUILDER */
-.builder-body{display:grid;grid-template-columns:1fr 330px;flex:1;overflow:hidden;height:calc(100vh - 59px);}
+.builder-body{display:grid;grid-template-columns:1fr 330px;flex:1;overflow:hidden;height:calc(100vh - 61px);}
 .builder-main{display:flex;flex-direction:column;padding:18px;overflow-y:auto;gap:13px;}
 .quiz-title-input{width:100%;padding:9px 12px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:'Syne',sans-serif;font-size:.95rem;font-weight:700;outline:none;transition:border-color .2s;}
-.quiz-title-input:focus{border-color:var(--accent);}
-
-/* OPTIONS TOGGLES */
+.quiz-title-input:focus{border-color:var(--gold);}
 .options-row{display:flex;gap:8px;flex-wrap:wrap;align-items:center;}
-.toggle-pill{display:flex;align-items:center;gap:6px;padding:5px 11px;border-radius:999px;border:1px solid var(--border);background:var(--surface2);cursor:pointer;font-size:.76rem;color:var(--text-soft);transition:all .18s;user-select:none;}
-.toggle-pill.active{background:rgba(91,106,240,.18);border-color:var(--accent);color:var(--accent);}
+.toggle-pill{display:flex;align-items:center;gap:6px;padding:5px 11px;border-radius:999px;border:1px solid var(--border);background:var(--surface2);cursor:pointer;font-size:.75rem;color:var(--text-soft);transition:all .18s;user-select:none;}
+.toggle-pill.active{background:rgba(240,192,48,.15);border-color:var(--gold);color:var(--gold);}
 .toggle-pill input{display:none;}
-
-/* VIDEO SOURCE TABS */
-.source-tabs{display:flex;gap:6px;margin-bottom:4px;}
-.source-tab{padding:6px 13px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--text-muted);font-family:'DM Sans',sans-serif;font-size:.79rem;cursor:pointer;transition:all .2s;}
-.source-tab.active{background:var(--accent);border-color:var(--accent);color:#fff;}
-
+.source-tabs{display:flex;gap:6px;margin-bottom:6px;}
+.source-tab{padding:6px 13px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--text-muted);font-family:'DM Sans',sans-serif;font-size:.78rem;cursor:pointer;transition:all .2s;}
+.source-tab.active{background:var(--gold);border-color:var(--gold);color:var(--blue);font-weight:700;}
 .url-bar{display:flex;gap:7px;}
 .url-input{flex:1;padding:8px 12px;background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);color:var(--text);font-family:'DM Sans',sans-serif;font-size:.83rem;outline:none;transition:border-color .2s;}
-.url-input:focus{border-color:var(--accent);}
+.url-input:focus{border-color:var(--gold);}
 .url-input::placeholder{color:var(--text-muted);}
-
-/* TRIM CONTROLS */
-.trim-row{display:flex;gap:8px;align-items:center;background:var(--surface2);border:1px solid var(--border);border-radius:9px;padding:9px 12px;}
-.trim-label{font-size:.75rem;color:var(--text-muted);white-space:nowrap;}
-.trim-input{width:72px;padding:5px 8px;background:var(--surface);border:1px solid var(--border);border-radius:7px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.79rem;outline:none;text-align:center;}
-.trim-input:focus{border-color:var(--accent);}
-
+.trim-row{display:flex;gap:8px;align-items:center;background:var(--surface2);border:1px solid var(--border);border-radius:9px;padding:9px 12px;flex-wrap:wrap;}
+.trim-label{font-size:.74rem;color:var(--text-muted);white-space:nowrap;}
+.trim-input{width:70px;padding:5px 8px;background:var(--surface);border:1px solid var(--border);border-radius:7px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.78rem;outline:none;text-align:center;}
+.trim-input:focus{border-color:var(--gold);}
 .video-wrapper{position:relative;background:#000;border-radius:var(--radius);overflow:hidden;aspect-ratio:16/9;border:1px solid var(--border);}
 .video-wrapper iframe{width:100%;height:100%;border:none;display:block;}
 .video-placeholder{width:100%;height:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--text-muted);background:var(--surface);}
 .video-placeholder .pi{font-size:2rem;opacity:.2;}
 .video-placeholder p{font-size:.78rem;}
-
-/* PPTX SLIDES */
 .slides-container{display:flex;gap:8px;flex-wrap:wrap;padding:10px;background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);min-height:80px;align-items:center;}
 .slide-thumb{position:relative;width:100px;height:66px;border:2px solid var(--border);border-radius:7px;overflow:hidden;cursor:pointer;transition:border-color .2s;}
-.slide-thumb:hover{border-color:var(--accent);}
+.slide-thumb:hover{border-color:var(--gold);}
 .slide-thumb img{width:100%;height:100%;object-fit:cover;}
 .slide-thumb .slide-num{position:absolute;bottom:2px;right:4px;font-size:.6rem;color:#fff;background:rgba(0,0,0,.6);padding:1px 4px;border-radius:3px;}
-.slide-thumb .slide-del{position:absolute;top:2px;right:2px;background:var(--accent2);color:#fff;border:none;border-radius:50%;width:16px;height:16px;font-size:.6rem;cursor:pointer;display:none;align-items:center;justify-content:center;}
+.slide-thumb .slide-del{position:absolute;top:2px;right:2px;background:#e05b5b;color:#fff;border:none;border-radius:50%;width:16px;height:16px;font-size:.6rem;cursor:pointer;display:none;align-items:center;justify-content:center;}
 .slide-thumb:hover .slide-del{display:flex;}
 .slides-empty{color:var(--text-muted);font-size:.79rem;margin:auto;}
 .upload-slide-btn{display:flex;align-items:center;justify-content:center;width:100px;height:66px;border:2px dashed var(--border);border-radius:7px;cursor:pointer;color:var(--text-muted);font-size:1.5rem;transition:all .2s;}
-.upload-slide-btn:hover{border-color:var(--accent);color:var(--accent);}
-
+.upload-slide-btn:hover{border-color:var(--gold);color:var(--gold);}
 .timeline{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:12px 14px;}
 .tl-label{font-size:.72rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);display:block;margin-bottom:8px;}
-.timeline-track{position:relative;height:6px;background:var(--border);border-radius:999px;margin:6px 0;cursor:pointer;}
+.timeline-track{position:relative;height:6px;background:var(--border);border-radius:999px;margin:6px 0;}
 .timeline-markers{position:relative;height:6px;}
-.timeline-marker{position:absolute;top:-7px;transform:translateX(-50%);width:20px;height:20px;border-radius:50%;background:var(--accent);border:2px solid var(--bg);cursor:pointer;transition:transform .15s;display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;font-weight:700;z-index:2;}
+.timeline-marker{position:absolute;top:-7px;transform:translateX(-50%);width:20px;height:20px;border-radius:50%;background:var(--accent2);border:2px solid var(--bg);cursor:pointer;transition:transform .15s;display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;font-weight:700;z-index:2;}
 .timeline-marker:hover{transform:translateX(-50%) scale(1.3);}
-.timeline-marker.open{background:var(--accent2);}
+.timeline-marker.open{background:var(--gold);}
 .timeline-marker.slide{background:var(--accent4);}
 .time-labels{display:flex;justify-content:space-between;font-size:.66rem;color:var(--text-muted);margin-top:3px;}
 .add-q-row{display:flex;gap:6px;align-items:center;margin-top:10px;flex-wrap:wrap;}
 .time-input{width:76px;padding:6px 8px;background:var(--surface2);border:1px solid var(--border);border-radius:7px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.78rem;outline:none;text-align:center;}
 .type-select{padding:6px 8px;background:var(--surface2);border:1px solid var(--border);border-radius:7px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.78rem;outline:none;cursor:pointer;}
-
 .builder-panel{border-left:1px solid var(--border);background:var(--surface);display:flex;flex-direction:column;overflow:hidden;}
 .panel-header{padding:12px 14px;border-bottom:1px solid var(--border);font-family:'Syne',sans-serif;font-weight:700;font-size:.84rem;}
 .questions-list{flex:1;overflow-y:auto;padding:7px;display:flex;flex-direction:column;gap:6px;}
 .questions-list::-webkit-scrollbar{width:3px;}
 .questions-list::-webkit-scrollbar-thumb{background:var(--border);border-radius:999px;}
 .q-card{background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:10px;cursor:pointer;transition:border-color .18s;}
-.q-card:hover{border-color:var(--accent);}
-.q-card.selected{border-color:var(--accent);background:rgba(91,106,240,.07);}
+.q-card:hover{border-color:var(--gold);}
+.q-card.selected{border-color:var(--gold);background:rgba(240,192,48,.06);}
 .q-card-top{display:flex;align-items:center;justify-content:space-between;margin-bottom:4px;}
-.q-time-badge{font-size:.68rem;font-weight:600;background:rgba(91,106,240,.17);color:var(--accent);padding:2px 6px;border-radius:999px;}
+.q-time-badge{font-size:.68rem;font-weight:600;background:rgba(240,192,48,.17);color:var(--gold);padding:2px 6px;border-radius:999px;}
 .q-type-badge{font-size:.66rem;font-weight:500;padding:2px 6px;border-radius:999px;}
-.q-type-badge.choix{background:rgba(91,106,240,.1);color:var(--accent);}
-.q-type-badge.open{background:rgba(224,91,138,.1);color:var(--accent2);}
-.q-type-badge.slide{background:rgba(240,160,48,.1);color:var(--accent4);}
+.q-type-badge.choix{background:rgba(126,184,255,.12);color:var(--accent2);}
+.q-type-badge.open{background:rgba(240,192,48,.12);color:var(--gold);}
+.q-type-badge.slide{background:rgba(240,160,48,.12);color:var(--accent4);}
 .q-preview{font-size:.78rem;color:var(--text-soft);line-height:1.4;}
 .q-card-actions{display:flex;gap:4px;margin-top:6px;}
 .panel-empty{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:18px;color:var(--text-muted);gap:6px;}
@@ -147,69 +136,65 @@ h1 .c1{color:var(--gold);}h1 .c2{color:var(--accent2);}
 .panel-empty p{font-size:.76rem;line-height:1.5;}
 
 /* PLAYER */
-.player-body{flex:1;display:flex;flex-direction:column;align-items:center;padding:24px 16px;background:radial-gradient(ellipse at 50% 0%,rgba(91,106,240,.1) 0%,transparent 55%),var(--bg);}
+.player-body{flex:1;display:flex;flex-direction:column;align-items:center;padding:22px 16px;background:linear-gradient(180deg,#0e1829 0%,#132040 100%);}
 .player-inner{width:100%;max-width:800px;}
-.player-title{font-family:'Syne',sans-serif;font-size:1.25rem;font-weight:800;margin-bottom:2px;}
-.player-subtitle{color:var(--text-muted);font-size:.78rem;margin-bottom:11px;}
-.player-video-wrap{position:relative;aspect-ratio:16/9;border-radius:var(--radius);overflow:hidden;border:1px solid var(--border);background:#000;margin-bottom:10px;}
+.player-title{font-family:'Syne',sans-serif;font-size:1.22rem;font-weight:800;margin-bottom:2px;}
+.player-subtitle{color:var(--text-muted);font-size:.78rem;margin-bottom:10px;}
+.player-video-wrap{position:relative;aspect-ratio:16/9;border-radius:var(--radius);overflow:hidden;border:2px solid var(--gold);background:#000;margin-bottom:10px;box-shadow:0 0 30px rgba(240,192,48,.15);}
 #player-video-slot{position:absolute;inset:0;}
 #player-video-slot iframe{width:100%;height:100%;border:none;display:block;}
-
-/* SLIDE DISPLAY IN PLAYER */
 .slide-display{position:absolute;inset:0;background:#000;display:none;align-items:center;justify-content:center;z-index:5;}
 .slide-display.active{display:flex;}
 .slide-display img{max-width:100%;max-height:100%;object-fit:contain;}
-
-/* ANTI-SKIP OVERLAY */
-.antiskip-overlay{position:absolute;inset:0;z-index:6;cursor:not-allowed;background:transparent;}
+.antiskip-overlay{position:absolute;inset:0;z-index:6;cursor:not-allowed;}
 .antiskip-overlay.hidden{display:none;}
-
-.quiz-overlay{display:none;position:absolute;inset:0;background:rgba(13,15,20,.93);backdrop-filter:blur(6px);align-items:center;justify-content:center;z-index:10;}
+.quiz-overlay{display:none;position:absolute;inset:0;background:rgba(10,18,40,.93);backdrop-filter:blur(6px);align-items:center;justify-content:center;z-index:10;}
 .quiz-overlay.open{display:flex;animation:fadeIn .22s ease;}
 @keyframes fadeIn{from{opacity:0}to{opacity:1}}
-.quiz-box{background:var(--surface);border:1px solid var(--border);border-radius:14px;padding:22px;max-width:470px;width:90%;animation:slideUp .22s ease;}
+.quiz-box{background:var(--surface);border:2px solid var(--gold);border-radius:14px;padding:22px;max-width:470px;width:90%;animation:slideUp .22s ease;box-shadow:0 0 30px rgba(240,192,48,.1);}
 @keyframes slideUp{from{transform:translateY(12px);opacity:0}to{transform:translateY(0);opacity:1}}
-.quiz-q-label{font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--accent);margin-bottom:6px;}
+.quiz-q-label{font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.08em;color:var(--gold);margin-bottom:6px;}
 .quiz-q-text{font-family:'Syne',sans-serif;font-size:.98rem;font-weight:700;line-height:1.4;margin-bottom:13px;}
-
-/* TIMER */
-.timer-bar-wrap{height:5px;background:var(--border);border-radius:999px;margin-bottom:13px;overflow:hidden;}
+.timer-bar-wrap{height:5px;background:var(--border);border-radius:999px;margin-bottom:11px;overflow:hidden;}
 .timer-bar{height:100%;background:var(--accent3);border-radius:999px;transition:width .9s linear,background .3s;}
 .timer-bar.warning{background:var(--accent4);}
-.timer-bar.danger{background:var(--accent2);}
-.timer-text{font-size:.72rem;color:var(--text-muted);text-align:right;margin-top:3px;margin-bottom:8px;}
-
+.timer-bar.danger{background:#e05b5b;}
+.timer-text{font-size:.71rem;color:var(--text-muted);text-align:right;margin-top:-8px;margin-bottom:9px;}
 .quiz-choices{display:flex;flex-direction:column;gap:6px;}
 .quiz-choice{padding:9px 12px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;cursor:pointer;font-size:.84rem;transition:all .15s;text-align:left;color:var(--text);font-family:'DM Sans',sans-serif;}
-.quiz-choice:hover:not(:disabled){border-color:var(--accent);background:rgba(91,106,240,.1);}
-.quiz-choice.correct{border-color:var(--accent3);background:rgba(62,207,142,.12);color:var(--accent3);}
-.quiz-choice.wrong{border-color:var(--accent2);background:rgba(224,91,138,.12);color:var(--accent2);}
+.quiz-choice:hover:not(:disabled){border-color:var(--gold);background:rgba(240,192,48,.08);}
+.quiz-choice.correct{border-color:var(--accent3);background:rgba(74,175,125,.12);color:var(--accent3);}
+.quiz-choice.wrong{border-color:#e05b5b;background:rgba(224,91,91,.12);color:#e05b5b;}
 .quiz-open-input{width:100%;padding:9px 11px;background:var(--surface2);border:1px solid var(--border);border-radius:8px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.84rem;outline:none;margin-bottom:7px;resize:vertical;min-height:70px;}
-.quiz-open-input:focus{border-color:var(--accent);}
+.quiz-open-input:focus{border-color:var(--gold);}
 .quiz-feedback{margin-top:10px;padding:7px 11px;border-radius:7px;font-size:.78rem;line-height:1.5;display:none;}
-.quiz-feedback.correct{background:rgba(62,207,142,.1);color:var(--accent3);border:1px solid rgba(62,207,142,.25);}
-.quiz-feedback.wrong{background:rgba(224,91,138,.1);color:var(--accent2);border:1px solid rgba(224,91,138,.25);}
-.quiz-feedback.open{background:rgba(91,106,240,.1);color:var(--accent);border:1px solid rgba(91,106,240,.25);}
-.player-progress{width:100%;height:3px;background:var(--border);border-radius:999px;margin-bottom:4px;overflow:hidden;}
-.player-progress-fill{height:100%;background:var(--accent);border-radius:999px;transition:width .5s;}
+.quiz-feedback.correct{background:rgba(74,175,125,.1);color:var(--accent3);border:1px solid rgba(74,175,125,.25);}
+.quiz-feedback.wrong{background:rgba(224,91,91,.1);color:#e05b5b;border:1px solid rgba(224,91,91,.25);}
+.quiz-feedback.open{background:rgba(126,184,255,.1);color:var(--accent2);border:1px solid rgba(126,184,255,.25);}
+.player-progress{width:100%;height:4px;background:var(--border);border-radius:999px;margin-bottom:4px;overflow:hidden;}
+.player-progress-fill{height:100%;background:var(--gold);border-radius:999px;transition:width .5s;}
 .player-time-info{font-size:.7rem;color:var(--text-muted);margin-bottom:10px;}
 
-/* SCORE FINAL */
-.score-final{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:20px;margin-top:14px;text-align:center;}
-.score-circle{width:90px;height:90px;border-radius:50%;border:4px solid var(--accent3);display:flex;align-items:center;justify-content:center;margin:0 auto 12px;font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;color:var(--accent3);}
-.score-circle.fail{border-color:var(--accent2);color:var(--accent2);}
-.score-title{font-family:'Syne',sans-serif;font-weight:700;font-size:1rem;margin-bottom:4px;}
-.score-sub{font-size:.8rem;color:var(--text-muted);margin-bottom:14px;}
-.summary-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--border);font-size:.8rem;color:var(--text-soft);}
+/* AD WARNING */
+.ad-warning{display:none;position:absolute;bottom:10px;left:50%;transform:translateX(-50%);background:rgba(240,192,48,.9);color:var(--blue);font-size:.75rem;font-weight:700;padding:6px 14px;border-radius:999px;z-index:8;white-space:nowrap;}
+.ad-warning.show{display:block;}
+
+/* SCORE */
+.score-final{background:var(--surface);border:2px solid var(--gold);border-radius:var(--radius);padding:20px;margin-top:14px;text-align:center;box-shadow:0 0 24px rgba(240,192,48,.1);}
+.score-circle{width:88px;height:88px;border-radius:50%;border:4px solid var(--accent3);display:flex;align-items:center;justify-content:center;margin:0 auto 11px;font-family:'Syne',sans-serif;font-size:1.5rem;font-weight:800;color:var(--accent3);}
+.score-circle.fail{border-color:#e05b5b;color:#e05b5b;}
+.score-title{font-family:'Syne',sans-serif;font-weight:700;font-size:.97rem;margin-bottom:3px;}
+.score-sub{font-size:.78rem;color:var(--text-muted);margin-bottom:12px;}
+.summary-row{display:flex;justify-content:space-between;align-items:center;padding:6px 0;border-bottom:1px solid var(--border);font-size:.79rem;color:var(--text-soft);}
 .summary-row:last-child{border-bottom:none;}
 
 /* DASHBOARD */
 .dashboard-body{flex:1;padding:24px;overflow-y:auto;max-width:940px;margin:0 auto;width:100%;}
-.dashboard-title{font-family:'Syne',sans-serif;font-size:1.32rem;font-weight:800;margin-bottom:3px;}
+.dashboard-title{font-family:'Syne',sans-serif;font-size:1.3rem;font-weight:800;margin-bottom:3px;}
 .dashboard-sub{color:var(--text-muted);font-size:.78rem;margin-bottom:18px;}
 .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(140px,1fr));gap:9px;margin-bottom:18px;}
 .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:14px;}
-.stat-value{font-family:'Syne',sans-serif;font-size:1.65rem;font-weight:800;color:var(--accent);line-height:1;}
+.stat-value{font-family:'Syne',sans-serif;font-size:1.6rem;font-weight:800;color:var(--gold);line-height:1;}
 .stat-label{font-size:.71rem;color:var(--text-muted);margin-top:3px;}
 .results-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;}
 .results-table{width:100%;border-collapse:collapse;}
@@ -217,45 +202,38 @@ h1 .c1{color:var(--gold);}h1 .c2{color:var(--accent2);}
 .results-table td{padding:9px 11px;font-size:.8rem;border-bottom:1px solid var(--border);color:var(--text-soft);}
 .results-table tr:last-child td{border-bottom:none;}
 .results-table tr:hover td{background:rgba(255,255,255,.02);}
-.pill-correct{background:rgba(62,207,142,.13);color:var(--accent3);padding:2px 7px;border-radius:999px;font-size:.7rem;font-weight:600;}
-.pill-wrong{background:rgba(224,91,138,.13);color:var(--accent2);padding:2px 7px;border-radius:999px;font-size:.7rem;font-weight:600;}
-.pill-open{background:rgba(91,106,240,.13);color:var(--accent);padding:2px 7px;border-radius:999px;font-size:.7rem;font-weight:600;}
+.pill-correct{background:rgba(74,175,125,.13);color:var(--accent3);padding:2px 7px;border-radius:999px;font-size:.7rem;font-weight:600;}
+.pill-wrong{background:rgba(224,91,91,.13);color:#e05b5b;padding:2px 7px;border-radius:999px;font-size:.7rem;font-weight:600;}
+.pill-open{background:rgba(126,184,255,.13);color:var(--accent2);padding:2px 7px;border-radius:999px;font-size:.7rem;font-weight:600;}
 .no-results{text-align:center;padding:32px;color:var(--text-muted);font-size:.82rem;}
 
 /* MODAL */
-.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.72);backdrop-filter:blur(4px);z-index:300;align-items:center;justify-content:center;padding:18px;}
+.modal-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.75);backdrop-filter:blur(4px);z-index:300;align-items:center;justify-content:center;padding:18px;}
 .modal-overlay.open{display:flex;}
 .modal{background:var(--surface);border:1px solid var(--border);border-radius:15px;padding:21px;width:100%;max-width:470px;box-shadow:var(--shadow);animation:slideUp .2s ease;max-height:90vh;overflow-y:auto;}
 .modal-title{font-family:'Syne',sans-serif;font-size:1rem;font-weight:700;margin-bottom:14px;}
 .form-group{margin-bottom:11px;}
 label{display:block;font-size:.76rem;color:var(--text-soft);margin-bottom:3px;font-weight:500;}
 .form-input,.form-textarea{width:100%;padding:8px 11px;background:var(--surface2);border:1px solid var(--border);border-radius:7px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.84rem;outline:none;transition:border-color .2s;}
-.form-input:focus,.form-textarea:focus{border-color:var(--accent);}
+.form-input:focus,.form-textarea:focus{border-color:var(--gold);}
 .form-textarea{resize:vertical;min-height:68px;line-height:1.5;}
 .choices-list{display:flex;flex-direction:column;gap:5px;}
 .choice-row{display:flex;gap:6px;align-items:center;}
 .choice-row input[type="text"]{flex:1;padding:6px 9px;background:var(--surface2);border:1px solid var(--border);border-radius:6px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.81rem;outline:none;}
-.choice-row input[type="text"]:focus{border-color:var(--accent);}
+.choice-row input[type="text"]:focus{border-color:var(--gold);}
 .radio-correct{width:14px;height:14px;cursor:pointer;accent-color:var(--accent3);flex-shrink:0;}
 .choice-hint{font-size:.66rem;color:var(--text-muted);margin-top:2px;}
 .modal-actions{display:flex;justify-content:flex-end;gap:7px;margin-top:15px;}
-
-/* TIMER SETTING */
-.timer-setting{display:flex;align-items:center;gap:8px;margin-top:4px;}
-.timer-setting input[type="number"]{width:68px;padding:6px 8px;background:var(--surface2);border:1px solid var(--border);border-radius:7px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.82rem;outline:none;text-align:center;}
-.timer-setting input[type="number"]:focus{border-color:var(--accent);}
-
-/* SHARE MODAL */
-.share-url-box{background:var(--surface2);border:1px solid var(--border);border-radius:7px;padding:9px 12px;font-size:.76rem;color:var(--text-soft);word-break:break-all;line-height:1.5;margin-bottom:11px;max-height:75px;overflow-y:auto;}
+.share-url-box{background:var(--surface2);border:1px solid var(--border);border-radius:7px;padding:9px 12px;font-size:.75rem;color:var(--text-soft);word-break:break-all;line-height:1.5;margin-bottom:11px;max-height:75px;overflow-y:auto;}
 
 /* LOGIN */
-.name-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.78);backdrop-filter:blur(4px);z-index:200;align-items:center;justify-content:center;}
+.name-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.82);backdrop-filter:blur(5px);z-index:200;align-items:center;justify-content:center;}
 .name-overlay.open{display:flex;}
-.name-box{background:var(--surface);border:1px solid var(--border);border-radius:15px;padding:26px;max-width:355px;width:90%;text-align:center;animation:slideUp .22s ease;}
+.name-box{background:var(--surface);border:2px solid var(--gold);border-radius:16px;padding:28px;max-width:360px;width:90%;text-align:center;animation:slideUp .22s ease;box-shadow:0 0 40px rgba(240,192,48,.15);}
 .name-box h2{font-family:'Syne',sans-serif;font-size:1.05rem;font-weight:800;margin-bottom:5px;}
 .name-box p{color:var(--text-muted);font-size:.78rem;margin-bottom:14px;line-height:1.5;}
 
-.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--surface);border:1px solid var(--border);border-radius:999px;padding:7px 16px;font-size:.8rem;color:var(--text);box-shadow:var(--shadow);z-index:999;transition:transform .3s ease;pointer-events:none;white-space:nowrap;}
+.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%) translateY(80px);background:var(--surface);border:1px solid var(--gold);border-radius:999px;padding:7px 16px;font-size:.8rem;color:var(--text);box-shadow:var(--shadow);z-index:999;transition:transform .3s ease;pointer-events:none;white-space:nowrap;}
 .toast.show{transform:translateX(-50%) translateY(0);}
 
 @media(max-width:680px){
@@ -266,6 +244,11 @@ label{display:block;font-size:.76rem;color:var(--text-soft);margin-bottom:3px;fo
 </style>
 </head>
 <body>
+
+<!-- LOGO MACRO -->
+<template id="logo-tpl">
+  <svg width="30" height="30" viewBox="0 0 36 36" fill="none"><path d="M18 2L4 8V18C4 25.5 10.5 32.3 18 34C25.5 32.3 32 25.5 32 18V8L18 2Z" fill="#f0c030"/><path d="M18 5L7 10V18C7 24.2 12 30.1 18 31.5C24 30.1 29 24.2 29 18V10L18 5Z" fill="#1a3a6b"/><path d="M14 17L17 20L23 14" stroke="#f0c030" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</template>
 
 <!-- HOME -->
 <div id="screen-home" class="screen active">
@@ -281,7 +264,7 @@ label{display:block;font-size:.76rem;color:var(--text-soft);margin-bottom:3px;fo
     <div class="hero">
       <div class="home-badge">🎬 Outil pédagogique interactif</div>
       <h1>Des quiz <span class="c1">intégrés</span><br>dans vos <span class="c2">vidéos</span> YouTube</h1>
-      <p class="hero-desc">Créez des quiz interactifs avec minuterie, blocage de navigation et résultats automatiques dans Google Sheets.</p>
+      <p class="hero-desc">Minuterie, blocage de navigation, résultats automatiques dans Google Sheets — aucune inscription requise pour les élèves.</p>
       <div class="hero-actions">
         <button class="btn btn-primary" onclick="createNewQuiz()">✏️ Créer un quiz</button>
         <button class="btn btn-outline" onclick="loadDemo()">▶ Voir une démo</button>
@@ -312,70 +295,49 @@ label{display:block;font-size:.76rem;color:var(--text-soft);margin-bottom:3px;fo
   <div class="builder-body">
     <div class="builder-main">
       <input class="quiz-title-input" id="quiz-title-input" type="text" placeholder="Titre du quiz...">
-
-      <!-- OPTIONS -->
       <div class="options-row">
-        <label class="toggle-pill" id="toggle-block-skip">
-          <input type="checkbox" onchange="toggleOption('blockSkip',this.checked)"> 🔒 Bloquer avance
-        </label>
-        <label class="toggle-pill" id="toggle-block-rewind">
-          <input type="checkbox" onchange="toggleOption('blockRewind',this.checked)"> ⏪ Bloquer retour
-        </label>
-        <label class="toggle-pill" id="toggle-timer">
-          <input type="checkbox" onchange="toggleOption('timer',this.checked)"> ⏱ Minuterie
-        </label>
+        <label class="toggle-pill" id="toggle-block-skip"><input type="checkbox" onchange="toggleOption('blockSkip',this.checked)"> 🔒 Bloquer avance</label>
+        <label class="toggle-pill" id="toggle-block-rewind"><input type="checkbox" onchange="toggleOption('blockRewind',this.checked)"> ⏪ Bloquer retour</label>
+        <label class="toggle-pill" id="toggle-timer"><input type="checkbox" onchange="toggleOption('timer',this.checked)"> ⏱ Minuterie</label>
         <div id="timer-seconds-wrap" style="display:none;align-items:center;gap:5px;">
-          <input type="number" id="timer-seconds" min="5" max="300" value="30" style="width:58px;padding:5px 7px;background:var(--surface2);border:1px solid var(--border);border-radius:7px;color:var(--text);font-size:.78rem;outline:none;text-align:center;" onchange="saveOptions()">
-          <span style="font-size:.74rem;color:var(--text-muted)">sec</span>
+          <input type="number" id="timer-seconds" min="5" max="300" value="30" style="width:56px;padding:5px 7px;background:var(--surface2);border:1px solid var(--border);border-radius:7px;color:var(--text);font-size:.78rem;outline:none;text-align:center;" onchange="saveOptions()">
+          <span style="font-size:.73rem;color:var(--text-muted)">sec</span>
         </div>
       </div>
-
-      <!-- SOURCE TABS -->
       <div>
         <div class="source-tabs">
           <button class="source-tab active" id="tab-yt" onclick="switchSource('yt')">📹 YouTube</button>
           <button class="source-tab" id="tab-pptx" onclick="switchSource('pptx')">📊 PowerPoint</button>
         </div>
-
-        <!-- YouTube source -->
         <div id="source-yt">
           <div class="url-bar">
             <input class="url-input" id="yt-url" type="text" placeholder="Lien YouTube... ex: https://www.youtube.com/watch?v=XXXXXXX">
             <button class="btn btn-primary btn-sm" onclick="loadVideo()">Charger</button>
           </div>
-          <!-- Trim controls -->
-          <div class="trim-row" style="margin-top:8px;" id="trim-row">
+          <div class="trim-row" style="margin-top:8px;">
             <span class="trim-label">✂️ Extrait :</span>
             <span class="trim-label">De</span>
             <input class="trim-input" id="trim-start" type="text" placeholder="0:00" value="0:00" onchange="saveTrim()">
             <span class="trim-label">à</span>
             <input class="trim-input" id="trim-end" type="text" placeholder="fin" onchange="saveTrim()">
-            <span style="font-size:.72rem;color:var(--text-muted)">(laisser vide = toute la vidéo)</span>
+            <span style="font-size:.71rem;color:var(--text-muted)">(vide = toute la vidéo)</span>
           </div>
           <div class="video-wrapper" id="video-container" style="margin-top:8px;">
             <div class="video-placeholder"><div class="pi">▶</div><p>Chargez une vidéo YouTube</p></div>
           </div>
         </div>
-
-        <!-- PowerPoint source -->
         <div id="source-pptx" style="display:none;">
           <div style="background:var(--surface2);border:1px solid var(--border);border-radius:9px;padding:12px;margin-bottom:8px;">
-            <p style="font-size:.8rem;color:var(--text-soft);margin-bottom:9px;">📊 Importez vos slides PowerPoint comme images. Convertissez d'abord votre PPTX en images PNG/JPG (via PowerPoint → Enregistrer sous → Images).</p>
+            <p style="font-size:.79rem;color:var(--text-soft);margin-bottom:8px;">📊 Importez vos slides PowerPoint comme images PNG/JPG (dans PowerPoint : Fichier → Exporter → Images).</p>
             <input type="file" id="slide-upload" accept="image/*" multiple style="display:none" onchange="handleSlideUpload(event)">
-            <button class="btn btn-outline btn-sm" onclick="document.getElementById('slide-upload').click()">📁 Importer des slides (images)</button>
+            <button class="btn btn-outline btn-sm" onclick="document.getElementById('slide-upload').click()">📁 Importer slides (images)</button>
           </div>
-          <div class="slides-container" id="slides-container">
-            <span class="slides-empty">Aucune slide importée</span>
-          </div>
+          <div class="slides-container" id="slides-container"><span class="slides-empty">Aucune slide importée</span></div>
         </div>
       </div>
-
-      <!-- TIMELINE -->
       <div class="timeline">
         <span class="tl-label">📍 Timeline des éléments</span>
-        <div class="timeline-track" id="timeline-track">
-          <div class="timeline-markers" id="timeline-markers"></div>
-        </div>
+        <div class="timeline-track"><div class="timeline-markers" id="timeline-markers"></div></div>
         <div class="time-labels"><span id="tl-start-lbl">0:00</span><span id="tl-mid">—</span><span id="tl-end">—</span></div>
         <div class="add-q-row">
           <span style="font-size:.77rem;color:var(--text-muted)">Ajouter à</span>
@@ -389,7 +351,6 @@ label{display:block;font-size:.76rem;color:var(--text-soft);margin-bottom:3px;fo
         </div>
       </div>
     </div>
-
     <div class="builder-panel">
       <div class="panel-header">📝 Éléments (<span id="q-count">0</span>)</div>
       <div class="questions-list" id="questions-list">
@@ -415,20 +376,14 @@ label{display:block;font-size:.76rem;color:var(--text-soft);margin-bottom:3px;fo
       <div class="player-subtitle" id="player-subtitle"></div>
       <div class="player-video-wrap">
         <div id="player-video-slot"></div>
-        <!-- Slide display -->
-        <div class="slide-display" id="slide-display">
-          <img id="slide-img" src="" alt="Slide">
-        </div>
-        <!-- Anti-skip overlay -->
+        <div class="slide-display" id="slide-display"><img id="slide-img" src="" alt="Slide"></div>
         <div class="antiskip-overlay hidden" id="antiskip-overlay" onclick="handleSkipAttempt()"></div>
-        <!-- Quiz overlay -->
+        <div class="ad-warning" id="ad-warning">⏸ Publicité en cours — le quiz reprendra automatiquement</div>
         <div class="quiz-overlay" id="quiz-overlay">
           <div class="quiz-box">
             <div class="quiz-q-label" id="quiz-label">Question 1</div>
             <div class="quiz-q-text" id="quiz-text"></div>
-            <div class="timer-bar-wrap" id="timer-bar-wrap" style="display:none">
-              <div class="timer-bar" id="timer-bar" style="width:100%"></div>
-            </div>
+            <div class="timer-bar-wrap" id="timer-bar-wrap" style="display:none"><div class="timer-bar" id="timer-bar" style="width:100%"></div></div>
             <div class="timer-text" id="timer-text" style="display:none"></div>
             <div id="quiz-content"></div>
             <div class="quiz-feedback" id="quiz-feedback"></div>
@@ -476,13 +431,13 @@ label{display:block;font-size:.76rem;color:var(--text-soft);margin-bottom:3px;fo
 <!-- LOGIN -->
 <div class="name-overlay" id="name-overlay">
   <div class="name-box">
-    <div style="font-size:1.8rem;margin-bottom:8px">🎓</div>
+    <svg width="44" height="44" viewBox="0 0 36 36" fill="none" style="margin:0 auto 10px;display:block"><path d="M18 2L4 8V18C4 25.5 10.5 32.3 18 34C25.5 32.3 32 25.5 32 18V8L18 2Z" fill="#f0c030"/><path d="M18 5L7 10V18C7 24.2 12 30.1 18 31.5C24 30.1 29 24.2 29 18V10L18 5Z" fill="#1a3a6b"/><path d="M14 17L17 20L23 14" stroke="#f0c030" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg>
     <h2 id="login-title">Connexion requise</h2>
     <p id="login-desc">Connectez-vous avec votre compte Google scolaire.</p>
     <div id="login-google-section">
       <div id="g_id_onload" data-client_id="717406017938-av5n3n48s5o0b472ulcl39q41kvoi0im.apps.googleusercontent.com" data-callback="handleGoogleSignIn" data-auto_prompt="false"></div>
       <div class="g_id_signin" data-type="standard" data-size="large" data-theme="filled_blue" data-text="signin_with" data-shape="rectangular" data-locale="fr" data-width="300"></div>
-      <div style="margin-top:12px;font-size:.7rem;color:var(--text-muted);line-height:1.5">ex: jtremblay@csduroy.qc.ca</div>
+      <div style="margin-top:11px;font-size:.7rem;color:var(--text-muted);line-height:1.5">ex: jtremblay@csduroy.qc.ca</div>
     </div>
     <div id="login-confirm-section" style="display:none">
       <div style="background:var(--surface2);border:1px solid var(--border);border-radius:9px;padding:12px;margin-bottom:12px;display:flex;align-items:center;gap:10px;">
@@ -502,7 +457,7 @@ label{display:block;font-size:.76rem;color:var(--text-soft);margin-bottom:3px;fo
 <div class="modal-overlay" id="modal-share">
   <div class="modal">
     <div class="modal-title">🔗 Lien à envoyer aux élèves</div>
-    <p style="font-size:.8rem;color:var(--text-soft);margin-bottom:10px;line-height:1.5">Ce lien contient toutes les données du quiz. Les élèves s'identifient avec leur compte Google scolaire.</p>
+    <p style="font-size:.79rem;color:var(--text-soft);margin-bottom:10px;line-height:1.5">Ce lien contient toutes les données du quiz. Les élèves se connectent avec leur compte Google scolaire.</p>
     <div class="share-url-box" id="share-url-display"></div>
     <div class="modal-actions">
       <button class="btn btn-outline" onclick="closeShareModal()">Fermer</button>
@@ -515,16 +470,13 @@ label{display:block;font-size:.76rem;color:var(--text-soft);margin-bottom:3px;fo
 <div class="modal-overlay" id="modal-add">
   <div class="modal">
     <div class="modal-title" id="modal-title">➕ Nouvel élément</div>
-
-    <!-- TIMER PER QUESTION -->
     <div class="form-group" id="modal-timer-group">
-      <label>⏱ Limite de temps (0 = désactivé)</label>
-      <div class="timer-setting">
-        <input type="number" id="modal-timer" min="0" max="300" value="0" placeholder="0">
-        <span style="font-size:.78rem;color:var(--text-muted)">secondes (0 = pas de limite)</span>
+      <label>⏱ Limite de temps pour cette question (0 = utiliser le réglage global)</label>
+      <div style="display:flex;align-items:center;gap:8px;margin-top:3px;">
+        <input class="form-input" type="number" id="modal-timer" min="0" max="300" value="0" style="width:70px;">
+        <span style="font-size:.77rem;color:var(--text-muted)">secondes (0 = pas de limite individuelle)</span>
       </div>
     </div>
-
     <div class="form-group">
       <label>Question</label>
       <textarea class="form-textarea" id="modal-q-text" placeholder="Écrivez votre question ici..."></textarea>
@@ -532,7 +484,7 @@ label{display:block;font-size:.76rem;color:var(--text-soft);margin-bottom:3px;fo
     <div id="modal-choix-section">
       <div class="form-group">
         <label>Réponses <span style="color:var(--text-muted);font-weight:400">(cochez ✓ la bonne)</span></label>
-        <div class="choices-list" id="choices-list">
+        <div class="choices-list">
           <div class="choice-row"><input type="radio" name="correct" class="radio-correct" value="0"><input type="text" placeholder="Réponse A"></div>
           <div class="choice-row"><input type="radio" name="correct" class="radio-correct" value="1"><input type="text" placeholder="Réponse B"></div>
           <div class="choice-row"><input type="radio" name="correct" class="radio-correct" value="2"><input type="text" placeholder="Réponse C (optionnel)"></div>
@@ -549,9 +501,9 @@ label{display:block;font-size:.76rem;color:var(--text-soft);margin-bottom:3px;fo
     </div>
     <div id="modal-slide-section" style="display:none">
       <div class="form-group">
-        <label>Slide à afficher (numéro)</label>
-        <input class="form-input" type="number" id="modal-slide-num" min="1" value="1" placeholder="1">
-        <p style="font-size:.72rem;color:var(--text-muted);margin-top:4px">La slide s'affichera à ce moment et restera jusqu'à la prochaine question.</p>
+        <label>Numéro de slide à afficher</label>
+        <input class="form-input" type="number" id="modal-slide-num" min="1" value="1">
+        <p style="font-size:.72rem;color:var(--text-muted);margin-top:4px">La slide s'affichera à ce moment de la vidéo.</p>
       </div>
     </div>
     <div class="modal-actions">
@@ -576,8 +528,8 @@ function saveAllQuizzes(d){localStorage.setItem('vq_quizzes',JSON.stringify(d));
 function getQuizLocal(id){return getAllQuizzes()[id]||null;}
 function saveQuizLocal(q){const d=getAllQuizzes();d[q.id]=q;saveAllQuizzes(d);}
 function deleteQuizLocal(id){const d=getAllQuizzes();delete d[id];saveAllQuizzes(d);}
-function getAllResults(){try{return JSON.parse(localStorage.getItem('vq_results3')||'{}');}catch(e){return{};}}
-function saveAllResults(d){localStorage.setItem('vq_results3',JSON.stringify(d));}
+function getAllResults(){try{return JSON.parse(localStorage.getItem('vq_results4')||'{}');}catch(e){return{};}}
+function saveAllResults(d){localStorage.setItem('vq_results4',JSON.stringify(d));}
 function getResults(id){return getAllResults()[id]||[];}
 function addResult(qid,row){const d=getAllResults();if(!d[qid])d[qid]=[];d[qid].push(row);saveAllResults(d);}
 function clearResultsFor(qid){const d=getAllResults();d[qid]=[];saveAllResults(d);}
@@ -586,12 +538,7 @@ function genId(){return Date.now().toString(36)+Math.random().toString(36).slice
 // ─── ENCODE/DECODE ───
 function encodeQuizForUrl(quiz){
   try{
-    const data=JSON.stringify({
-      id:quiz.id,title:quiz.title,videoId:quiz.videoId,
-      videoDuration:quiz.videoDuration,questions:quiz.questions,
-      options:quiz.options,trimStart:quiz.trimStart,trimEnd:quiz.trimEnd,
-      slides:quiz.slides,sourceType:quiz.sourceType
-    });
+    const data=JSON.stringify({id:quiz.id,title:quiz.title,videoId:quiz.videoId,videoDuration:quiz.videoDuration,questions:quiz.questions,options:quiz.options,slides:quiz.slides,sourceType:quiz.sourceType});
     return encodeURIComponent(btoa(unescape(encodeURIComponent(data))));
   }catch(e){return null;}
 }
@@ -604,14 +551,11 @@ function decodeQuizFromUrl(str){
 }
 
 // ─── GOOGLE SIGN-IN ───
-let googleUser=null;
-let playerName='';
-let playerEmail='';
-
+let googleUser=null,playerName='',playerEmail='';
 function handleGoogleSignIn(response){
   try{
-    const payload=JSON.parse(atob(response.credential.split('.')[1]));
-    googleUser={name:payload.name,email:payload.email,picture:payload.picture||''};
+    const p=JSON.parse(atob(response.credential.split('.')[1]));
+    googleUser={name:p.name,email:p.email,picture:p.picture||''};
     document.getElementById('login-google-section').style.display='none';
     document.getElementById('login-confirm-section').style.display='block';
     document.getElementById('login-fullname').textContent=googleUser.name;
@@ -643,24 +587,14 @@ function openNamePrompt(){
 }
 
 // ─── STATE ───
-let currentQuizId=null;
-let editingQIdx=null;
-let pendingType='choix';
-let pendingTime=30;
-let ytPlayer=null;
-let ytReady=false;
-let pendingPlay=false;
-let pollInterval=null;
-let timerInterval=null;
-let answeredQs=new Set();
-let currentQ=null;
-let isStudentMode=false;
-let sessionResults=[];
-let activeQuiz=null;
-let currentSlideIdx=-1;
-let activeSourceType='yt'; // 'yt' or 'pptx'
+let currentQuizId=null,editingQIdx=null,pendingType='choix',pendingTime=30;
+let ytPlayer=null,ytReady=false,pendingPlay=false;
+let pollInterval=null,timerInterval=null,slideTimer=null;
+let answeredQs=new Set(),currentQ=null,isStudentMode=false;
+let sessionResults=[],activeQuiz=null,slideSecond=0,lastTime=0;
+let isAdPlaying=false; // 🔑 FLAG PUBLICITÉ
 
-// ─── VIDEO ───
+// ─── VIDEO STOP ───
 function stopVideo(){
   stopPoll();stopTimer();
   try{if(ytPlayer&&ytReady)ytPlayer.stopVideo();}catch(e){}
@@ -681,17 +615,14 @@ function renderHome(){
   const grid=document.getElementById('quiz-grid');
   if(!ids.length){grid.innerHTML=`<div class="empty-list"><div class="ei">📋</div><p>Aucun quiz créé.<br>Cliquez sur <strong>Créer un quiz</strong>.</p></div>`;return;}
   grid.innerHTML=ids.map(id=>{
-    const q=quizzes[id];
-    const qc=(q.questions||[]).filter(x=>x.type!=='slide').length;
-    const rc=getResults(id).length;
-    const opts=q.options||{};
+    const q=quizzes[id],qc=(q.questions||[]).filter(x=>x.type!=='slide').length,rc=getResults(id).length,opts=q.options||{};
     return `<div class="quiz-card">
       <div class="quiz-card-title">${q.title||'<em style="color:var(--text-muted);font-style:italic">Sans titre</em>'}</div>
       <div class="quiz-card-meta">
         <span class="meta-pill blue">${q.sourceType==='pptx'?'📊 Slides':'📹 Vidéo'}</span>
         <span class="meta-pill blue">💬 ${qc} question${qc!==1?'s':''}</span>
-        ${opts.blockSkip?'<span class="meta-pill orange">🔒 Blocage</span>':''}
-        ${opts.timer?'<span class="meta-pill orange">⏱ Minuterie</span>':''}
+        ${opts.blockSkip?'<span class="meta-pill gold">🔒 Blocage</span>':''}
+        ${opts.timer?'<span class="meta-pill gold">⏱ Minuterie</span>':''}
         ${rc?`<span class="meta-pill green">📊 ${rc} réponse${rc!==1?'s':''}</span>`:''}
       </div>
       <div class="quiz-card-actions">
@@ -706,14 +637,11 @@ function renderHome(){
 }
 function createNewQuiz(){
   const id=genId();
-  saveQuizLocal({id,title:'',videoId:'',videoDuration:300,questions:[],options:{blockSkip:false,blockRewind:false,timer:false,timerSeconds:30},trimStart:0,trimEnd:0,slides:[],sourceType:'yt',updatedAt:Date.now()});
+  saveQuizLocal({id,title:'',videoId:'',videoDuration:300,questions:[],options:{blockSkip:false,blockRewind:false,timer:false,timerSeconds:30,trimStart:0,trimEnd:0},slides:[],sourceType:'yt',updatedAt:Date.now()});
   currentQuizId=id;openBuilder(getQuizLocal(id));
 }
 function editQuiz(id){currentQuizId=id;openBuilder(getQuizLocal(id));}
-function confirmDelete(id){
-  if(!confirm(`Supprimer ce quiz ?`))return;
-  deleteQuizLocal(id);renderHome();
-}
+function confirmDelete(id){if(!confirm('Supprimer ce quiz ?'))return;deleteQuizLocal(id);renderHome();}
 function openDashFor(id){currentQuizId=id;goTo('dashboard');}
 function launchFromHome(id){
   const quiz=getQuizLocal(id);
@@ -721,8 +649,6 @@ function launchFromHome(id){
   if(!quiz?.questions?.length){showToast('⚠️ Aucune question.');return;}
   currentQuizId=id;activeQuiz=quiz;isStudentMode=false;openNamePrompt();
 }
-
-// ─── SHARE ───
 function openShareModalFor(id){
   currentQuizId=id;autosaveFor(id);
   const url=buildShareUrlFor(id);
@@ -739,14 +665,10 @@ function buildShareUrlFor(id){
   return encoded?window.location.href.split('?')[0]+'?q='+encoded:null;
 }
 function closeShareModal(){document.getElementById('modal-share').classList.remove('open');}
-function copyShareLink(){
-  const url=document.getElementById('share-url-display').textContent;
-  navigator.clipboard.writeText(url).then(()=>showToast('✅ Lien copié !'));
-}
+function copyShareLink(){navigator.clipboard.writeText(document.getElementById('share-url-display').textContent).then(()=>showToast('✅ Lien copié !'));}
 
 // ─── BUILDER ───
 function switchSource(type){
-  activeSourceType=type;
   document.getElementById('source-yt').style.display=type==='yt'?'block':'none';
   document.getElementById('source-pptx').style.display=type==='pptx'?'block':'none';
   document.getElementById('tab-yt').classList.toggle('active',type==='yt');
@@ -754,36 +676,25 @@ function switchSource(type){
   const quiz=getQuizLocal(currentQuizId);if(!quiz)return;
   quiz.sourceType=type;quiz.updatedAt=Date.now();saveQuizLocal(quiz);
 }
-
 function openBuilder(quiz){
   document.getElementById('quiz-title-input').value=quiz.title||'';
   document.getElementById('yt-url').value=quiz.videoId?`https://www.youtube.com/watch?v=${quiz.videoId}`:'';
-  // Options
   const opts=quiz.options||{};
   setToggle('toggle-block-skip',opts.blockSkip);
   setToggle('toggle-block-rewind',opts.blockRewind);
   setToggle('toggle-timer',opts.timer);
   document.getElementById('timer-seconds').value=opts.timerSeconds||30;
   document.getElementById('timer-seconds-wrap').style.display=opts.timer?'flex':'none';
-  // Trim
   document.getElementById('trim-start').value=opts.trimStart?fmt(opts.trimStart):'0:00';
   document.getElementById('trim-end').value=opts.trimEnd?fmt(opts.trimEnd):'';
-  // Source
   switchSource(quiz.sourceType||'yt');
-  // Slides
   renderSlideThumbs(quiz.slides||[]);
-  // Video
   const vc=document.getElementById('video-container');
   vc.innerHTML=quiz.videoId?`<iframe src="https://www.youtube.com/embed/${quiz.videoId}?rel=0" allowfullscreen style="width:100%;height:100%;border:none;"></iframe>`:`<div class="video-placeholder"><div class="pi">▶</div><p>Chargez une vidéo YouTube</p></div>`;
   renderTimeline();renderQuestionsList();
   goTo('builder');
 }
-function setToggle(id,val){
-  const el=document.getElementById(id);
-  if(!el)return;
-  el.classList.toggle('active',!!val);
-  el.querySelector('input').checked=!!val;
-}
+function setToggle(id,val){const el=document.getElementById(id);if(!el)return;el.classList.toggle('active',!!val);el.querySelector('input').checked=!!val;}
 function toggleOption(key,val){
   const quiz=getQuizLocal(currentQuizId);if(!quiz)return;
   if(!quiz.options)quiz.options={};
@@ -801,15 +712,14 @@ function saveTrim(){
   const quiz=getQuizLocal(currentQuizId);if(!quiz)return;
   if(!quiz.options)quiz.options={};
   quiz.options.trimStart=parseTime(document.getElementById('trim-start').value)||0;
-  const endVal=document.getElementById('trim-end').value.trim();
-  quiz.options.trimEnd=endVal?parseTime(endVal):0;
+  const ev=document.getElementById('trim-end').value.trim();
+  quiz.options.trimEnd=ev?parseTime(ev):0;
   quiz.updatedAt=Date.now();saveQuizLocal(quiz);
 }
 function loadVideo(){
   const id=extractYTId(document.getElementById('yt-url').value.trim());
   if(!id){alert('URL YouTube invalide.');return;}
-  const quiz=getQuizLocal(currentQuizId);
-  quiz.videoId=id;quiz.updatedAt=Date.now();saveQuizLocal(quiz);
+  const quiz=getQuizLocal(currentQuizId);quiz.videoId=id;quiz.updatedAt=Date.now();saveQuizLocal(quiz);
   document.getElementById('video-container').innerHTML=`<iframe src="https://www.youtube.com/embed/${id}?rel=0" allowfullscreen style="width:100%;height:100%;border:none;"></iframe>`;
   renderTimeline();showToast('✅ Vidéo chargée !');
 }
@@ -822,13 +732,13 @@ function autosaveFor(id){
 }
 document.getElementById('quiz-title-input').addEventListener('input',autosave);
 
-// ─── SLIDES (PPTX) ───
+// ─── SLIDES ───
 function handleSlideUpload(e){
   const files=Array.from(e.target.files);
   const quiz=getQuizLocal(currentQuizId);if(!quiz)return;
   if(!quiz.slides)quiz.slides=[];
   let pending=files.length;
-  files.forEach((file,i)=>{
+  files.forEach(file=>{
     const reader=new FileReader();
     reader.onload=ev=>{
       quiz.slides.push({name:file.name,data:ev.target.result});
@@ -842,37 +752,27 @@ function handleSlideUpload(e){
 function renderSlideThumbs(slides){
   const c=document.getElementById('slides-container');
   if(!slides||!slides.length){c.innerHTML='<span class="slides-empty">Aucune slide importée</span>';return;}
-  c.innerHTML=slides.map((s,i)=>`
-    <div class="slide-thumb">
-      <img src="${s.data}" alt="Slide ${i+1}">
-      <span class="slide-num">Slide ${i+1}</span>
-      <button class="slide-del" onclick="deleteSlide(${i})">×</button>
-    </div>`).join('')+`<label class="upload-slide-btn" for="slide-upload">+</label>`;
+  c.innerHTML=slides.map((s,i)=>`<div class="slide-thumb"><img src="${s.data}" alt="Slide ${i+1}"><span class="slide-num">Slide ${i+1}</span><button class="slide-del" onclick="deleteSlide(${i})">×</button></div>`).join('')+`<label class="upload-slide-btn" for="slide-upload">+</label>`;
 }
 function deleteSlide(i){
   const quiz=getQuizLocal(currentQuizId);if(!quiz)return;
-  quiz.slides.splice(i,1);quiz.updatedAt=Date.now();saveQuizLocal(quiz);
-  renderSlideThumbs(quiz.slides);
+  quiz.slides.splice(i,1);quiz.updatedAt=Date.now();saveQuizLocal(quiz);renderSlideThumbs(quiz.slides);
 }
 
 // ─── TIMELINE ───
 function renderTimeline(){
   const quiz=getQuizLocal(currentQuizId);if(!quiz)return;
-  const trimStart=quiz.options?.trimStart||0;
-  const trimEnd=quiz.options?.trimEnd||quiz.videoDuration||300;
-  const dur=trimEnd>trimStart?trimEnd-trimStart:quiz.videoDuration||300;
-  document.getElementById('tl-start-lbl').textContent=fmt(trimStart);
-  document.getElementById('tl-mid').textContent=fmt(trimStart+Math.floor(dur/2));
-  document.getElementById('tl-end').textContent=fmt(trimEnd||quiz.videoDuration||300);
+  const ts=quiz.options?.trimStart||0,te=quiz.options?.trimEnd||quiz.videoDuration||300;
+  const dur=te>ts?te-ts:quiz.videoDuration||300;
+  document.getElementById('tl-start-lbl').textContent=fmt(ts);
+  document.getElementById('tl-mid').textContent=fmt(ts+Math.floor(dur/2));
+  document.getElementById('tl-end').textContent=fmt(te);
   const m=document.getElementById('timeline-markers');m.innerHTML='';
   (quiz.questions||[]).forEach((q,i)=>{
-    const pos=Math.max(0,q.time-trimStart);
-    const pct=Math.min(pos/dur*100,100);
+    const pct=Math.min(Math.max(0,q.time-ts)/dur*100,100);
     const dot=document.createElement('div');
     dot.className='timeline-marker'+(q.type==='open'?' open':q.type==='slide'?' slide':'');
-    dot.style.left=pct+'%';
-    dot.title=`${fmt(q.time)} — ${q.type==='slide'?'Slide '+q.slideNum:q.text}`;
-    dot.textContent=i+1;
+    dot.style.left=pct+'%';dot.title=`${fmt(q.time)} — ${q.type==='slide'?'Slide '+q.slideNum:q.text}`;dot.textContent=i+1;
     dot.onclick=()=>highlightQ(i);m.appendChild(dot);
   });
 }
@@ -881,25 +781,16 @@ function renderQuestionsList(){
   document.getElementById('q-count').textContent=(quiz.questions||[]).length;
   const list=document.getElementById('questions-list');
   if(!quiz.questions?.length){list.innerHTML=`<div class="panel-empty"><div class="ei">💬</div><p>Aucun élément.<br>Ajoutez-en un ci-dessous.</p></div>`;return;}
-  const sorted=[...quiz.questions].map((q,i)=>({...q,origIdx:i})).sort((a,b)=>a.time-b.time);
-  list.innerHTML=sorted.map(q=>`
+  list.innerHTML=[...quiz.questions].map((q,i)=>({...q,origIdx:i})).sort((a,b)=>a.time-b.time).map(q=>`
     <div class="q-card" id="qcard-${q.origIdx}" onclick="highlightQ(${q.origIdx})">
-      <div class="q-card-top">
-        <span class="q-time-badge">⏱ ${fmt(q.time)}</span>
-        <span class="q-type-badge ${q.type}">${q.type==='choix'?'☑ QCM':q.type==='open'?'✍ Ouverte':'🖼 Slide'}</span>
-      </div>
+      <div class="q-card-top"><span class="q-time-badge">⏱ ${fmt(q.time)}</span><span class="q-type-badge ${q.type}">${q.type==='choix'?'☑ QCM':q.type==='open'?'✍ Ouverte':'🖼 Slide'}</span></div>
       <div class="q-preview">${q.type==='slide'?`Slide ${q.slideNum}`:q.text||'<em>Sans titre</em>'}</div>
-      <div class="q-card-actions">
-        <button class="btn btn-outline btn-sm" onclick="event.stopPropagation();editQ(${q.origIdx})">✏️</button>
-        <button class="btn btn-danger btn-sm" onclick="event.stopPropagation();deleteQ(${q.origIdx})">🗑</button>
-      </div>
+      <div class="q-card-actions"><button class="btn btn-outline btn-sm" onclick="event.stopPropagation();editQ(${q.origIdx})">✏️</button><button class="btn btn-danger btn-sm" onclick="event.stopPropagation();deleteQ(${q.origIdx})">🗑</button></div>
     </div>`).join('');
 }
 function highlightQ(i){document.querySelectorAll('.q-card').forEach(c=>c.classList.remove('selected'));document.getElementById('qcard-'+i)?.classList.add('selected');}
-
 function previewCurrentQuiz(){
-  autosave();
-  const quiz=getQuizLocal(currentQuizId);
+  autosave();const quiz=getQuizLocal(currentQuizId);
   if(quiz?.sourceType!=='pptx'&&!quiz?.videoId){alert('Chargez une vidéo d\'abord !');return;}
   if(!quiz?.questions?.length){alert('Ajoutez au moins une question !');return;}
   activeQuiz=quiz;isStudentMode=false;openNamePrompt();
@@ -907,15 +798,12 @@ function previewCurrentQuiz(){
 
 // ─── MODAL ───
 function openAddModal(editIdx=null){
-  editingQIdx=editIdx;
-  const quiz=getQuizLocal(currentQuizId);
+  editingQIdx=editIdx;const quiz=getQuizLocal(currentQuizId);
   pendingType=editIdx!==null?quiz.questions[editIdx].type:document.getElementById('q-type').value;
   pendingTime=editIdx!==null?quiz.questions[editIdx].time:parseTime(document.getElementById('q-time').value);
   document.getElementById('modal-title').textContent=editIdx!==null?'✏️ Modifier':'➕ Nouvel élément';
-  document.getElementById('modal-q-text').value='';
-  document.getElementById('modal-open-answer').value='';
-  document.getElementById('modal-timer').value=0;
-  document.getElementById('modal-slide-num').value=1;
+  document.getElementById('modal-q-text').value='';document.getElementById('modal-open-answer').value='';
+  document.getElementById('modal-timer').value=0;document.getElementById('modal-slide-num').value=1;
   document.querySelectorAll('.choices-list input[type="text"]').forEach(i=>i.value='');
   document.querySelectorAll('.radio-correct').forEach(r=>r.checked=false);
   if(editIdx!==null){
@@ -939,17 +827,14 @@ function closeModal(){document.getElementById('modal-add').classList.remove('ope
 function editQ(i){openAddModal(i);}
 function deleteQ(i){
   if(!confirm('Supprimer ?'))return;
-  const quiz=getQuizLocal(currentQuizId);
-  quiz.questions.splice(i,1);quiz.updatedAt=Date.now();saveQuizLocal(quiz);
+  const quiz=getQuizLocal(currentQuizId);quiz.questions.splice(i,1);quiz.updatedAt=Date.now();saveQuizLocal(quiz);
   renderTimeline();renderQuestionsList();
 }
 function saveQuestion(){
   const quiz=getQuizLocal(currentQuizId);
   let q={time:pendingTime,type:pendingType,timerSeconds:parseInt(document.getElementById('modal-timer').value)||0};
-  if(pendingType==='slide'){
-    q.slideNum=parseInt(document.getElementById('modal-slide-num').value)||1;
-    q.text='';
-  }else{
+  if(pendingType==='slide'){q.slideNum=parseInt(document.getElementById('modal-slide-num').value)||1;q.text='';}
+  else{
     const text=document.getElementById('modal-q-text').value.trim();
     if(!text){alert('La question ne peut pas être vide.');return;}
     q.text=text;
@@ -962,15 +847,14 @@ function saveQuestion(){
     }else{q.answer=document.getElementById('modal-open-answer').value.trim();}
   }
   if(editingQIdx!==null)quiz.questions[editingQIdx]=q;else quiz.questions.push(q);
-  quiz.updatedAt=Date.now();saveQuizLocal(quiz);
-  closeModal();renderTimeline();renderQuestionsList();
+  quiz.updatedAt=Date.now();saveQuizLocal(quiz);closeModal();renderTimeline();renderQuestionsList();
 }
 document.getElementById('q-type').addEventListener('change',e=>{pendingType=e.target.value;});
 
 // ─── PLAYER ───
 function onYouTubeIframeAPIReady(){if(pendingPlay)initYTPlayer();}
 function initYTPlayer(){
-  pendingPlay=false;ytReady=false;
+  pendingPlay=false;ytReady=false;isAdPlaying=false;
   if(ytPlayer){try{ytPlayer.destroy();}catch(e){}ytPlayer=null;}
   document.getElementById('player-video-slot').innerHTML='<div id="yt-player"></div>';
   const trimStart=activeQuiz.options?.trimStart||0;
@@ -986,11 +870,52 @@ function initYTPlayer(){
         e.target.playVideo();startPoll();
       },
       onStateChange:e=>{
-        if(e.data===YT.PlayerState.PLAYING&&!currentQ)startPoll();
-        else if(e.data===YT.PlayerState.PAUSED||e.data===YT.PlayerState.ENDED)stopPoll();
+        // ─── GESTION DES PUBLICITÉS ───
+        // YT.PlayerState: -1=unstarted, 0=ended, 1=playing, 2=paused, 3=buffering, 5=video cued
+        // Les pubs font passer l'état à 1 mais getDuration() retourne la durée de la pub (très courte)
+        // ou la durée est 0. On détecte ça pour éviter de déclencher les questions pendant une pub.
+        if(e.data===YT.PlayerState.PLAYING){
+          // Vérifier si c'est une pub : la vidéo joue mais getCurrentTime est très proche de 0
+          // et getDuration est différent de la vidéo principale
+          const curDur=ytPlayer.getDuration();
+          const expectedDur=activeQuiz.videoDuration||0;
+          // Si la durée est très différente de celle attendue → probablement une pub
+          if(expectedDur>30&&curDur>0&&Math.abs(curDur-expectedDur)>30){
+            isAdPlaying=true;
+            stopPoll();
+            document.getElementById('ad-warning').classList.add('show');
+            // Vérifier toutes les 2 secondes si la pub est terminée
+            checkAdEnd();
+          }else{
+            isAdPlaying=false;
+            document.getElementById('ad-warning').classList.remove('show');
+            if(!currentQ)startPoll();
+          }
+        }else if(e.data===YT.PlayerState.PAUSED||e.data===YT.PlayerState.ENDED){
+          if(!isAdPlaying)stopPoll();
+        }
       }
     }
   });
+}
+
+function checkAdEnd(){
+  // Vérifie si la pub est terminée en comparant la durée
+  const checkInterval=setInterval(()=>{
+    if(!ytPlayer||!ytReady)return clearInterval(checkInterval);
+    try{
+      const curDur=ytPlayer.getDuration();
+      const expectedDur=activeQuiz.videoDuration||0;
+      const state=ytPlayer.getPlayerState();
+      // Si la durée est revenue à la normale → pub terminée
+      if(Math.abs(curDur-expectedDur)<=30||state===YT.PlayerState.PLAYING&&curDur===expectedDur){
+        clearInterval(checkInterval);
+        isAdPlaying=false;
+        document.getElementById('ad-warning').classList.remove('show');
+        if(!currentQ)startPoll();
+      }
+    }catch(e){clearInterval(checkInterval);}
+  },1500);
 }
 
 function buildPlayerNav(){
@@ -999,103 +924,80 @@ function buildPlayerNav(){
     `<button class="nav-btn" onclick="stopVideo();goTo('builder')">← Retour à l'édition</button>
      <button class="nav-btn" onclick="stopVideo();goTo('dashboard')">📊 Tableau de bord</button>`;
 }
-
 function startPlayer(){
-  sessionResults=[];currentSlideIdx=-1;
+  sessionResults=[];slideSecond=0;lastTime=0;isAdPlaying=false;
   document.getElementById('player-title').textContent=activeQuiz.title||'Quiz interactif';
   document.getElementById('player-subtitle').textContent=`${(activeQuiz.questions||[]).filter(q=>q.type!=='slide').length} question(s) — Bonne chance, ${playerName} !`;
   document.getElementById('player-progress').style.width='0%';
   document.getElementById('player-time-info').textContent='0:00 écoulé';
   document.getElementById('student-summary').style.display='none';
-  document.getElementById('student-summary').innerHTML='';
   document.getElementById('slide-display').classList.remove('active');
+  document.getElementById('ad-warning').classList.remove('show');
   answeredQs=new Set();currentQ=null;stopPoll();stopTimer();
   document.getElementById('quiz-overlay').classList.remove('open');
-  // Anti-skip
-  const ao=document.getElementById('antiskip-overlay');
-  ao.classList.toggle('hidden',!activeQuiz.options?.blockRewind&&!activeQuiz.options?.blockSkip);
-  buildPlayerNav();
-  goTo('player');
+  document.getElementById('antiskip-overlay').classList.toggle('hidden',!activeQuiz.options?.blockRewind&&!activeQuiz.options?.blockSkip);
+  buildPlayerNav();goTo('player');
   if(activeQuiz.sourceType==='pptx'){
-    // Mode slides : afficher la première slide
-    document.getElementById('player-video-slot').innerHTML='<div style="width:100%;height:100%;background:#111;display:flex;align-items:center;justify-content:center;color:#555;font-size:.85rem;position:absolute;inset:0">Les slides s\'afficheront au bon moment</div>';
+    document.getElementById('player-video-slot').innerHTML='<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;background:#0e1829;color:#7a90b8;font-size:.85rem">Les slides s\'afficheront au bon moment ▶</div>';
     startSlidePoll();
   }else{
     if(typeof YT!=='undefined'&&YT.Player)initYTPlayer();
-    else{pendingPlay=true;document.getElementById('player-video-slot').innerHTML='<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#555;font-size:.85rem">Chargement…</div>';}
+    else{pendingPlay=true;document.getElementById('player-video-slot').innerHTML='<div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;color:#7a90b8;font-size:.85rem">Chargement…</div>';}
   }
 }
 
-// ─── POLL (YouTube) ───
+// ─── POLL ───
 function startPoll(){
+  if(isAdPlaying)return; // Ne pas poller pendant une pub
   stopPoll();
   pollInterval=setInterval(()=>{
-    if(!ytPlayer||!ytReady)return;
+    if(!ytPlayer||!ytReady||isAdPlaying)return;
     let cur=0;try{cur=Math.floor(ytPlayer.getCurrentTime());}catch(e){return;}
-    const trimStart=activeQuiz.options?.trimStart||0;
-    const trimEnd=activeQuiz.options?.trimEnd||activeQuiz.videoDuration||300;
-    // Bloquer le retour en arrière
-    if(activeQuiz.options?.blockRewind&&cur<lastTime-1){
-      try{ytPlayer.seekTo(lastTime,true);}catch(e){}
-      return;
-    }
+    // Vérification anti-pub supplémentaire : si getCurrentTime est 0 et vidéo joue depuis un moment → pub
+    const state=ytPlayer.getPlayerState();
+    if(state!==YT.PlayerState.PLAYING)return;
+    const ts=activeQuiz.options?.trimStart||0,te=activeQuiz.options?.trimEnd||activeQuiz.videoDuration||300;
+    // Bloquer retour arrière
+    if(activeQuiz.options?.blockRewind&&cur<lastTime-1){try{ytPlayer.seekTo(lastTime,true);}catch(e){}return;}
     lastTime=cur;
-    const dur=(trimEnd>trimStart?trimEnd-trimStart:activeQuiz.videoDuration||300);
-    const elapsed=Math.max(0,cur-trimStart);
+    const dur=te>ts?te-ts:activeQuiz.videoDuration||300;
+    const elapsed=Math.max(0,cur-ts);
     document.getElementById('player-progress').style.width=Math.min(elapsed/dur*100,100)+'%';
     document.getElementById('player-time-info').textContent=`${fmt(elapsed)} écoulé`;
-    // Stop at trimEnd
-    if(trimEnd&&cur>=trimEnd){stopPoll();try{ytPlayer.pauseVideo();}catch(e){}showStudentSummary();return;}
-    // Check questions
+    if(te&&cur>=te){stopPoll();try{ytPlayer.pauseVideo();}catch(e){}showStudentSummary();return;}
     const sorted=(activeQuiz.questions||[]).map((q,i)=>({...q,idx:i})).sort((a,b)=>a.time-b.time);
-    for(const q of sorted){
-      if(!answeredQs.has(q.idx)&&cur>=q.time){triggerQuestion(q);return;}
-    }
+    for(const q of sorted){if(!answeredQs.has(q.idx)&&cur>=q.time){triggerQuestion(q);return;}}
   },500);
 }
-let lastTime=0;
-
-// ─── POLL (Slides) ───
-let slideTimer=null;
-let slideSecond=0;
 function startSlidePoll(){
   stopPoll();
   const sorted=(activeQuiz.questions||[]).map((q,i)=>({...q,idx:i})).sort((a,b)=>a.time-b.time);
-  const totalDur=sorted.length?sorted[sorted.length-1].time+10:60;
   slideTimer=setInterval(()=>{
     slideSecond++;
-    document.getElementById('player-progress').style.width=Math.min(slideSecond/totalDur*100,100)+'%';
+    const total=sorted.length?sorted[sorted.length-1].time+10:60;
+    document.getElementById('player-progress').style.width=Math.min(slideSecond/total*100,100)+'%';
     document.getElementById('player-time-info').textContent=`${fmt(slideSecond)} écoulé`;
-    for(const q of sorted){
-      if(!answeredQs.has(q.idx)&&slideSecond>=q.time){triggerQuestion(q);return;}
-    }
-    if(answeredQs.size>=sorted.length&&slideSecond>totalDur){clearInterval(slideTimer);showStudentSummary();}
+    for(const q of sorted){if(!answeredQs.has(q.idx)&&slideSecond>=q.time){triggerQuestion(q);return;}}
+    if(answeredQs.size>=sorted.length)showStudentSummary();
   },1000);
 }
 function stopPoll(){clearInterval(pollInterval);pollInterval=null;clearInterval(slideTimer);slideTimer=null;}
 function handleSkipAttempt(){showToast('⛔ Vous ne pouvez pas avancer dans la vidéo.');}
 
-// ─── QUESTIONS ───
+// ─── TRIGGER ───
 function triggerQuestion(q){
-  stopPoll();clearInterval(slideTimer);
+  stopPoll();
   if(activeQuiz.sourceType!=='pptx'){try{if(ytPlayer&&ytReady)ytPlayer.pauseVideo();}catch(e){}}
   currentQ=q;
-  // Afficher slide si type slide
   if(q.type==='slide'){
-    const slides=activeQuiz.slides||[];
-    const slide=slides[q.slideNum-1];
-    if(slide){
-      document.getElementById('slide-img').src=slide.data;
-      document.getElementById('slide-display').classList.add('active');
-    }
+    const slide=(activeQuiz.slides||[])[q.slideNum-1];
+    if(slide){document.getElementById('slide-img').src=slide.data;document.getElementById('slide-display').classList.add('active');}
     answeredQs.add(q.idx);currentQ=null;
     setTimeout(()=>{
       if(activeQuiz.sourceType==='pptx')startSlidePoll();
       else{try{if(ytPlayer&&ytReady)ytPlayer.playVideo();}catch(e){}startPoll();}
-    },100);
-    return;
+    },200);return;
   }
-  // Question normale
   document.getElementById('slide-display').classList.remove('active');
   const total=(activeQuiz.questions||[]).filter(x=>x.type!=='slide').length;
   const answered=Array.from(answeredQs).filter(i=>(activeQuiz.questions[i]?.type!=='slide')).length;
@@ -1103,7 +1005,6 @@ function triggerQuestion(q){
   document.getElementById('quiz-text').textContent=q.text;
   document.getElementById('quiz-feedback').style.display='none';
   document.getElementById('quiz-next-btn').style.display='none';
-  // Timer
   const timerSec=q.timerSeconds||(activeQuiz.options?.timer?activeQuiz.options.timerSeconds:0);
   setupTimer(timerSec);
   const content=document.getElementById('quiz-content');
@@ -1116,155 +1017,113 @@ function triggerQuestion(q){
 }
 
 // ─── TIMER ───
-let timerRemaining=0;
+let timerTotal=0;
 function setupTimer(seconds){
   stopTimer();
-  const wrap=document.getElementById('timer-bar-wrap');
-  const bar=document.getElementById('timer-bar');
-  const txt=document.getElementById('timer-text');
+  const wrap=document.getElementById('timer-bar-wrap'),bar=document.getElementById('timer-bar'),txt=document.getElementById('timer-text');
   if(!seconds){wrap.style.display='none';txt.style.display='none';return;}
-  timerRemaining=seconds;
+  timerTotal=seconds;let remaining=seconds;
   wrap.style.display='block';txt.style.display='block';
-  bar.style.width='100%';bar.style.background='';
-  bar.className='timer-bar';
-  txt.textContent=`${seconds}s`;
+  bar.style.width='100%';bar.className='timer-bar';txt.textContent=`${seconds}s`;
   timerInterval=setInterval(()=>{
-    timerRemaining--;
-    const pct=timerRemaining/seconds*100;
-    bar.style.width=pct+'%';
-    txt.textContent=`${timerRemaining}s`;
-    if(pct<=33)bar.className='timer-bar danger';
-    else if(pct<=60)bar.className='timer-bar warning';
-    if(timerRemaining<=0){
+    remaining--;
+    const pct=remaining/timerTotal*100;
+    bar.style.width=pct+'%';txt.textContent=`${remaining}s`;
+    if(pct<=33)bar.className='timer-bar danger';else if(pct<=60)bar.className='timer-bar warning';
+    if(remaining<=0){
       stopTimer();
-      // Temps écoulé → forcer la réponse
-      const q=currentQ;
-      if(!q)return;
+      const q=currentQ;if(!q)return;
       document.querySelectorAll('.quiz-choice').forEach(b=>b.setAttribute('disabled',''));
-      document.querySelectorAll('.quiz-choice')[q.correct]?.classList.add('correct');
+      if(q.choices)document.querySelectorAll('.quiz-choice')[q.correct]?.classList.add('correct');
       const fb=document.getElementById('quiz-feedback');
       fb.className='quiz-feedback wrong';
-      fb.textContent=`⏰ Temps écoulé ! La bonne réponse était : "${q.choices?.[q.correct]||''}"`;
-      fb.style.display='block';
-      document.getElementById('quiz-next-btn').style.display='inline-flex';
-      const row={name:playerName,email:playerEmail,question:q.text,type:q.type,answer:'(temps écoulé)',status:'wrong',timerExpired:true,time:new Date().toLocaleTimeString('fr-CA')};
-      if(!isStudentMode)addResult(currentQuizId,row);
-      sessionResults.push(row);
+      fb.textContent=`⏰ Temps écoulé !${q.choices?` La bonne réponse : "${q.choices[q.correct]}"`:''}`;
+      fb.style.display='block';document.getElementById('quiz-next-btn').style.display='inline-flex';
+      const row={name:playerName,email:playerEmail,question:q.text,type:q.type,answer:'(temps écoulé)',status:'wrong',time:new Date().toLocaleTimeString('fr-CA')};
+      if(!isStudentMode)addResult(currentQuizId,row);sessionResults.push(row);
     }
   },1000);
 }
 function stopTimer(){clearInterval(timerInterval);timerInterval=null;}
 
 function answerChoice(idx){
-  stopTimer();
-  const q=currentQ;
+  stopTimer();const q=currentQ;
   document.querySelectorAll('.quiz-choice').forEach(b=>b.setAttribute('disabled',''));
   document.querySelectorAll('.quiz-choice')[idx].classList.add(idx===q.correct?'correct':'wrong');
   if(idx!==q.correct)document.querySelectorAll('.quiz-choice')[q.correct].classList.add('correct');
   const ok=idx===q.correct;
-  const fb=document.getElementById('quiz-feedback');
-  fb.className='quiz-feedback '+(ok?'correct':'wrong');
+  const fb=document.getElementById('quiz-feedback');fb.className='quiz-feedback '+(ok?'correct':'wrong');
   fb.textContent=ok?'✅ Bonne réponse !':`❌ La bonne réponse était : "${q.choices[q.correct]}"`;
-  fb.style.display='block';
-  document.getElementById('quiz-next-btn').style.display='inline-flex';
+  fb.style.display='block';document.getElementById('quiz-next-btn').style.display='inline-flex';
   const row={name:playerName,email:playerEmail,question:q.text,type:q.type,answer:q.choices[idx],status:ok?'correct':'wrong',time:new Date().toLocaleTimeString('fr-CA')};
-  if(!isStudentMode)addResult(currentQuizId,row);
-  sessionResults.push(row);
+  if(!isStudentMode)addResult(currentQuizId,row);sessionResults.push(row);
 }
 function answerOpen(){
-  stopTimer();
-  const val=document.getElementById('open-input')?.value.trim();if(!val)return;
-  const q=currentQ;
-  const fb=document.getElementById('quiz-feedback');
-  fb.className='quiz-feedback open';
+  stopTimer();const val=document.getElementById('open-input')?.value.trim();if(!val)return;const q=currentQ;
+  const fb=document.getElementById('quiz-feedback');fb.className='quiz-feedback open';
   fb.innerHTML=`📝 Réponse enregistrée !${q.answer?`<br><strong>Référence :</strong> ${q.answer}`:''}`;
-  fb.style.display='block';
-  document.getElementById('open-input').setAttribute('disabled','');
+  fb.style.display='block';document.getElementById('open-input').setAttribute('disabled','');
   document.getElementById('quiz-next-btn').style.display='inline-flex';
   const row={name:playerName,email:playerEmail,question:q.text,type:q.type,answer:val,status:'open',time:new Date().toLocaleTimeString('fr-CA')};
-  if(!isStudentMode)addResult(currentQuizId,row);
-  sessionResults.push(row);
+  if(!isStudentMode)addResult(currentQuizId,row);sessionResults.push(row);
 }
 function dismissQuestion(){
   answeredQs.add(currentQ.idx);currentQ=null;
   document.getElementById('quiz-overlay').classList.remove('open');
-  const allDone=answeredQs.size>=(activeQuiz.questions||[]).length;
-  if(allDone){stopPoll();showStudentSummary();return;}
+  if(answeredQs.size>=(activeQuiz.questions||[]).length){stopPoll();showStudentSummary();return;}
   if(activeQuiz.sourceType==='pptx')startSlidePoll();
   else{try{if(ytPlayer&&ytReady)ytPlayer.playVideo();}catch(e){}startPoll();}
 }
 function restartPlayer(){
-  stopPoll();stopTimer();answeredQs=new Set();currentQ=null;sessionResults=[];lastTime=0;slideSecond=0;
+  stopPoll();stopTimer();answeredQs=new Set();currentQ=null;sessionResults=[];lastTime=0;slideSecond=0;isAdPlaying=false;
   document.getElementById('quiz-overlay').classList.remove('open');
   document.getElementById('student-summary').style.display='none';
   document.getElementById('slide-display').classList.remove('active');
-  if(activeQuiz.sourceType==='pptx'){startSlidePoll();}
-  else{try{if(ytPlayer&&ytReady){const ts=activeQuiz.options?.trimStart||0;ytPlayer.seekTo(ts);ytPlayer.playVideo();startPoll();}}catch(e){}}
+  document.getElementById('ad-warning').classList.remove('show');
+  if(activeQuiz.sourceType==='pptx')startSlidePoll();
+  else{try{if(ytPlayer&&ytReady){ytPlayer.seekTo(activeQuiz.options?.trimStart||0);ytPlayer.playVideo();startPoll();}}catch(e){}}
 }
 
 // ─── SCORE & SUMMARY ───
 function showStudentSummary(){
   if(!sessionResults.length)return;
-  const qcmResults=sessionResults.filter(r=>r.type==='choix');
-  const correct=qcmResults.filter(r=>r.status==='correct').length;
-  const total=qcmResults.length;
-  const pct=total>0?Math.round(correct/total*100):null;
-  const pass=pct===null||pct>=60;
-  // Envoyer à Google Sheets
+  const qcm=sessionResults.filter(r=>r.type==='choix'),correct=qcm.filter(r=>r.status==='correct').length,total=qcm.length;
+  const pct=total>0?Math.round(correct/total*100):null,pass=pct===null||pct>=60;
   sendToGoogleSheets(playerName,playerEmail,activeQuiz.title||'Sans titre',sessionResults,pct);
-  const rows=sessionResults.map(r=>`
-    <div class="summary-row">
-      <span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-right:8px">${r.question}</span>
-      <span>${r.status==='correct'?'<span class="pill-correct">✅</span>':r.status==='wrong'?'<span class="pill-wrong">❌</span>':'<span class="pill-open">📝</span>'}</span>
-    </div>`).join('');
+  const rows=sessionResults.map(r=>`<div class="summary-row"><span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-right:8px">${r.question}</span><span>${r.status==='correct'?'<span class="pill-correct">✅</span>':r.status==='wrong'?'<span class="pill-wrong">❌</span>':'<span class="pill-open">📝</span>'}</span></div>`).join('');
   const s=document.getElementById('student-summary');
-  s.innerHTML=`<div class="score-final">
-    ${pct!==null?`<div class="score-circle ${pass?'':'fail'}">${pct}%</div>`:''}
-    <div class="score-title">🎉 Quiz terminé, ${playerName} !</div>
-    <div class="score-sub">${pct!==null?`${correct} / ${total} bonne${correct!==1?'s':''} réponse${correct!==1?'s':''}`:''} — Résultats envoyés à votre enseignant</div>
-    ${rows}
-  </div>`;
+  s.innerHTML=`<div class="score-final">${pct!==null?`<div class="score-circle ${pass?'':'fail'}">${pct}%</div>`:''}<div class="score-title">🎉 Terminé, ${playerName} !</div><div class="score-sub">${pct!==null?`${correct} / ${total} bonne${correct!==1?'s':''} réponse${correct!==1?'s':''}`:''} — Résultats envoyés à votre enseignant ✅</div>${rows}</div>`;
   s.style.display='block';
 }
 
 // ─── GOOGLE SHEETS ───
 async function sendToGoogleSheets(name,email,title,results,score){
-  try{
-    await fetch(SHEETS_URL,{
-      method:'POST',mode:'no-cors',
-      headers:{'Content-Type':'application/json'},
-      body:JSON.stringify({studentName:name,studentEmail:email,quizTitle:title,results,finalScore:score!==null?score+'%':'N/A'})
-    });
-  }catch(e){console.warn('Sheets:',e);}
+  try{await fetch(SHEETS_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'application/json'},body:JSON.stringify({studentName:name,studentEmail:email,quizTitle:title,results,finalScore:score!==null?score+'%':'N/A'})});}
+  catch(e){console.warn('Sheets:',e);}
 }
 
 // ─── DASHBOARD ───
 function renderDashboard(){
-  const quiz=getQuizLocal(currentQuizId);
-  const results=getResults(currentQuizId);
+  const quiz=getQuizLocal(currentQuizId),results=getResults(currentQuizId);
   document.getElementById('dash-title').textContent=`📊 ${quiz?.title||'Tableau de bord'}`;
   document.getElementById('dash-sub').textContent=`${results.length} réponse(s) — Résultats complets dans votre Google Sheet`;
-  const correct=results.filter(r=>r.status==='correct').length;
-  const wrong=results.filter(r=>r.status==='wrong').length;
+  const correct=results.filter(r=>r.status==='correct').length,wrong=results.filter(r=>r.status==='wrong').length;
   const pct=(correct+wrong)>0?Math.round(correct/(correct+wrong)*100):0;
   document.getElementById('stats-grid').innerHTML=`
     <div class="stat-card"><div class="stat-value">${results.length}</div><div class="stat-label">Réponses totales</div></div>
     <div class="stat-card"><div class="stat-value" style="color:var(--accent3)">${correct}</div><div class="stat-label">Bonnes réponses</div></div>
-    <div class="stat-card"><div class="stat-value" style="color:var(--accent2)">${wrong}</div><div class="stat-label">Mauvaises réponses</div></div>
+    <div class="stat-card"><div class="stat-value" style="color:#e05b5b">${wrong}</div><div class="stat-label">Mauvaises réponses</div></div>
     <div class="stat-card"><div class="stat-value">${pct}%</div><div class="stat-label">Taux de réussite</div></div>`;
-  const tbody=document.getElementById('results-tbody');
-  const noRes=document.getElementById('no-results');
+  const tbody=document.getElementById('results-tbody'),noRes=document.getElementById('no-results');
   if(!results.length){tbody.innerHTML='';noRes.style.display='';return;}
   noRes.style.display='none';
   tbody.innerHTML=results.map(r=>`<tr>
-    <td><strong>${r.name}</strong></td>
-    <td style="font-size:.75rem">${r.email||'—'}</td>
-    <td style="max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${r.question}</td>
+    <td><strong>${r.name}</strong></td><td style="font-size:.74rem">${r.email||'—'}</td>
+    <td style="max-width:155px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${r.question}</td>
     <td>${r.type==='choix'?'☑ QCM':'✍ Ouverte'}</td>
     <td style="max-width:130px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${r.answer}</td>
     <td>${r.status==='correct'?'<span class="pill-correct">✅ Correct</span>':r.status==='wrong'?'<span class="pill-wrong">❌ Incorrect</span>':'<span class="pill-open">📝 Ouvert</span>'}</td>
-    <td>${r.finalScore||'—'}</td>
-    <td>${r.time}</td>
+    <td>${r.finalScore||'—'}</td><td>${r.time}</td>
   </tr>`).join('');
 }
 function clearResults(){if(!confirm('Effacer ?'))return;clearResultsFor(currentQuizId);renderDashboard();}
@@ -1273,7 +1132,7 @@ function clearResults(){if(!confirm('Effacer ?'))return;clearResultsFor(currentQ
 function loadDemo(){
   const id='demo_'+genId();
   const quiz={id,title:'🎬 Démo — Rick Astley',videoId:'dQw4w9WgXcQ',videoDuration:212,
-    options:{blockSkip:true,blockRewind:true,timer:true,timerSeconds:20,trimStart:0,trimEnd:0},
+    options:{blockSkip:true,blockRewind:true,timer:true,timerSeconds:20,trimStart:0,trimEnd:120},
     slides:[],sourceType:'yt',
     questions:[
       {time:10,type:'choix',text:'Qui interprète cette chanson ?',choices:['Rick Astley','Michael Jackson','David Bowie','Elton John'],correct:0,timerSeconds:20},
@@ -1291,7 +1150,7 @@ function checkUrlParams(){
   try{quiz=JSON.parse(decodeURIComponent(escape(atob(decodeURIComponent(encoded)))));}
   catch(e){try{let s=encoded.replace(/-/g,'+').replace(/_/g,'/');while(s.length%4)s+='=';quiz=JSON.parse(decodeURIComponent(escape(atob(s))));}catch(e2){quiz=null;}}
   if(!quiz||!quiz.questions?.length){
-    document.body.innerHTML=`<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;gap:14px;text-align:center;padding:20px;background:#0d0f14;color:#eef0f8;font-family:sans-serif"><div style="font-size:3rem">⚠️</div><div style="font-size:1.3rem;font-weight:800">Lien invalide</div><div style="color:#6b7280;font-size:.87rem;max-width:320px;line-height:1.6">Demandez un nouveau lien à votre enseignant.</div></div>`;
+    document.body.innerHTML=`<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;gap:14px;text-align:center;padding:20px;background:#0e1829;color:#f0f4ff;font-family:sans-serif"><svg width="52" height="52" viewBox="0 0 36 36" fill="none" style="margin:0 auto"><path d="M18 2L4 8V18C4 25.5 10.5 32.3 18 34C25.5 32.3 32 25.5 32 18V8L18 2Z" fill="#f0c030"/><path d="M18 5L7 10V18C7 24.2 12 30.1 18 31.5C24 30.1 29 24.2 29 18V10L18 5Z" fill="#1a3a6b"/><path d="M14 17L17 20L23 14" stroke="#f0c030" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><div style="font-size:1.3rem;font-weight:800;font-family:'Syne',sans-serif">Lien invalide</div><div style="color:#7a90b8;font-size:.87rem;max-width:320px;line-height:1.6">Demandez un nouveau lien à votre enseignant.</div></div>`;
     return;
   }
   document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));

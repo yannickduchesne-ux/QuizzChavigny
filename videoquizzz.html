@@ -469,7 +469,6 @@ function openNamePrompt() {
   googleUser = null;
   document.getElementById('login-google-section').style.display = 'block';
   document.getElementById('login-confirm-section').style.display = 'none';
-  // Ajuster le titre selon le mode
   if (isStudentMode) {
     document.getElementById('login-title').textContent = 'Connexion requise';
     document.getElementById('login-desc').textContent = 'Connectez-vous avec votre compte Google scolaire pour accéder au quiz.';
@@ -478,8 +477,8 @@ function openNamePrompt() {
     document.getElementById('login-desc').textContent = 'Connectez-vous pour tester le quiz en mode enseignant.';
   }
   document.getElementById('name-overlay').classList.add('open');
-  // Réinitialiser le bouton Google Sign-In
-  setTimeout(() => {
+  // Initialiser le bouton Google Sign-In
+  function initGoogleBtn() {
     try {
       google.accounts.id.initialize({
         client_id: GOOGLE_CLIENT_ID,
@@ -489,8 +488,12 @@ function openNamePrompt() {
         document.querySelector('.g_id_signin'),
         { theme: 'filled_blue', size: 'large', locale: 'fr', width: 300 }
       );
-    } catch(e) {}
-  }, 100);
+    } catch(e) {
+      // Google script pas encore prêt, réessayer
+      setTimeout(initGoogleBtn, 300);
+    }
+  }
+  initGoogleBtn();
 }
 
 // ─── GOOGLE SHEETS ───
@@ -1040,7 +1043,12 @@ function showToast(msg){const t=document.getElementById('toast');t.textContent=m
 
 // ─── INIT ───
 renderHome();
-checkUrlParams();
+// Attendre que le DOM et les scripts soient complètement chargés
+if (document.readyState === 'complete') {
+  checkUrlParams();
+} else {
+  window.addEventListener('load', checkUrlParams);
+}
 </script>
 </body>
 </html>

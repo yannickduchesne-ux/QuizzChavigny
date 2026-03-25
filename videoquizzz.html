@@ -3,57 +3,61 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>VideoQuiz+</title>
+<title>Quiz Interactif — École Chavigny</title>
 <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
 <style>
   :root {
-    --bg:#0d0f14;--surface:#161920;--surface2:#1e2230;
-    --border:#2a2f3f;--accent:#5b6af0;--accent2:#e05b8a;
-    --accent3:#3ecf8e;--text:#eef0f8;--text-muted:#6b7280;
-    --text-soft:#a0a8c0;--radius:12px;--shadow:0 4px 24px rgba(0,0,0,.4);
+    --bg:#0e1829;--surface:#132040;--surface2:#1a2d55;
+    --border:#2a4070;--accent:#f0c030;--accent2:#7eb8ff;
+    --accent3:#4caf7d;--text:#f0f4ff;--text-muted:#7a90b8;
+    --text-soft:#a8bcda;--radius:12px;--shadow:0 4px 24px rgba(0,0,0,.5);
+    --blue:#1a3a6b;--blue-light:#244d8f;--gold:#f0c030;--gold-dark:#c9a020;
   }
   *{box-sizing:border-box;margin:0;padding:0;}
   body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);min-height:100vh;overflow-x:hidden;}
   .screen{display:none;min-height:100vh;flex-direction:column;}
   .screen.active{display:flex;}
 
-  header{padding:15px 26px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--border);background:var(--surface);position:sticky;top:0;z-index:100;}
-  .logo{font-family:'Syne',sans-serif;font-weight:800;font-size:1.2rem;letter-spacing:-.02em;cursor:pointer;user-select:none;}
-  .logo span{color:var(--accent);}.logo em{color:var(--accent2);font-style:normal;}
+  header{padding:13px 26px;display:flex;align-items:center;justify-content:space-between;border-bottom:2px solid var(--gold);background:var(--blue);position:sticky;top:0;z-index:100;box-shadow:0 2px 16px rgba(0,0,0,.4);}
+  .logo{display:flex;align-items:center;gap:11px;cursor:pointer;user-select:none;}
+  .logo-text{display:flex;flex-direction:column;line-height:1.15;}
+  .logo-name{font-family:'Syne',sans-serif;font-weight:800;font-size:1.1rem;color:#fff;letter-spacing:.01em;}
+  .logo-tagline{font-size:.6rem;color:var(--gold);font-weight:600;letter-spacing:.1em;text-transform:uppercase;}
+  .logo-sep{width:1px;height:30px;background:rgba(255,255,255,.2);margin:0 10px;}
+  .logo-app{font-family:'Syne',sans-serif;font-weight:700;font-size:.85rem;color:var(--gold);}
   nav{display:flex;gap:6px;flex-wrap:wrap;}
-  .nav-btn{padding:7px 13px;border-radius:8px;border:1px solid var(--border);background:transparent;color:var(--text-soft);font-family:'DM Sans',sans-serif;font-size:.82rem;cursor:pointer;transition:all .2s;}
-  .nav-btn:hover{border-color:var(--accent);color:var(--accent);}
-  .nav-btn.primary{background:var(--accent);border-color:var(--accent);color:#fff;}
-  .nav-btn.primary:hover{background:#4a57d4;}
-  .nav-btn.danger:hover{background:var(--accent2);border-color:var(--accent2);color:#fff;}
+  .nav-btn{padding:7px 13px;border-radius:8px;border:1px solid rgba(255,255,255,.2);background:transparent;color:rgba(255,255,255,.8);font-family:'DM Sans',sans-serif;font-size:.82rem;cursor:pointer;transition:all .2s;}
+  .nav-btn:hover{border-color:var(--gold);color:var(--gold);}
+  .nav-btn.primary{background:var(--gold);border-color:var(--gold);color:var(--blue);font-weight:700;}
+  .nav-btn.primary:hover{background:var(--gold-dark);}
+  .nav-btn.danger:hover{background:#e05b5b;border-color:#e05b5b;color:#fff;}
 
-  .btn{display:inline-flex;align-items:center;gap:6px;padding:9px 17px;border-radius:var(--radius);border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:500;transition:all .18s;}
-  .btn-primary{background:var(--accent);color:#fff;}.btn-primary:hover{background:#4a57d4;transform:translateY(-1px);}
-  .btn-outline{background:transparent;border:1px solid var(--border);color:var(--text-soft);}.btn-outline:hover{border-color:var(--accent);color:var(--accent);}
-  .btn-ghost{background:transparent;border:none;color:var(--text-muted);padding:5px 8px;}.btn-ghost:hover{color:var(--accent2);}
-  .btn-danger{background:var(--accent2);color:#fff;}
+  .btn{display:inline-flex;align-items:center;gap:6px;padding:9px 17px;border-radius:var(--radius);border:none;cursor:pointer;font-family:'DM Sans',sans-serif;font-size:.85rem;font-weight:600;transition:all .18s;}
+  .btn-primary{background:var(--gold);color:var(--blue);}.btn-primary:hover{background:var(--gold-dark);transform:translateY(-1px);}
+  .btn-outline{background:transparent;border:1px solid var(--border);color:var(--text-soft);}.btn-outline:hover{border-color:var(--gold);color:var(--gold);}
+  .btn-ghost{background:transparent;border:none;color:var(--text-muted);padding:5px 8px;}.btn-ghost:hover{color:#e05b5b;}
+  .btn-danger{background:#e05b5b;color:#fff;}
   .btn-sm{padding:6px 12px;font-size:.78rem;}
 
-  /* HOME */
-  #screen-home{background:radial-gradient(ellipse at 25% 15%,rgba(91,106,240,.12) 0%,transparent 55%),radial-gradient(ellipse at 75% 85%,rgba(224,91,138,.08) 0%,transparent 55%),var(--bg);}
+  #screen-home{background:linear-gradient(160deg,#0e1829 0%,#132040 60%,#0e1829 100%);}
   .home-body{flex:1;padding:44px 26px;max-width:880px;margin:0 auto;width:100%;}
   .hero{text-align:center;margin-bottom:46px;}
-  .home-badge{display:inline-block;background:rgba(91,106,240,.15);border:1px solid rgba(91,106,240,.3);color:var(--accent);padding:4px 13px;border-radius:999px;font-size:.71rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:17px;}
+  .home-badge{display:inline-block;background:rgba(240,192,48,.15);border:1px solid rgba(240,192,48,.35);color:var(--gold);padding:4px 13px;border-radius:999px;font-size:.71rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;margin-bottom:17px;}
   h1{font-family:'Syne',sans-serif;font-size:clamp(1.8rem,4vw,2.8rem);font-weight:800;line-height:1.1;letter-spacing:-.03em;margin-bottom:12px;}
-  h1 .c1{color:var(--accent);}h1 .c2{color:var(--accent2);}
+  h1 .c1{color:var(--gold);}h1 .c2{color:#7eb8ff;}
   .hero-desc{color:var(--text-soft);font-size:.92rem;line-height:1.7;max-width:430px;margin:0 auto 25px;}
   .hero-actions{display:flex;gap:10px;justify-content:center;flex-wrap:wrap;}
   .section-header{display:flex;align-items:center;margin-bottom:12px;}
   .section-title{font-family:'Syne',sans-serif;font-size:.92rem;font-weight:700;}
   .section-count{font-size:.75rem;color:var(--text-muted);margin-left:7px;}
   .quiz-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(262px,1fr));gap:11px;}
-  .quiz-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:17px;transition:border-color .2s,transform .15s;display:flex;flex-direction:column;gap:9px;}
-  .quiz-card:hover{border-color:rgba(91,106,240,.45);transform:translateY(-2px);}
+  .quiz-card{background:var(--surface);border:1px solid var(--border);border-left:3px solid var(--gold);border-radius:var(--radius);padding:17px;transition:border-color .2s,transform .15s;display:flex;flex-direction:column;gap:9px;}
+  .quiz-card:hover{border-color:var(--gold);transform:translateY(-2px);box-shadow:0 4px 20px rgba(240,192,48,.1);}
   .quiz-card-title{font-family:'Syne',sans-serif;font-weight:700;font-size:.9rem;line-height:1.3;}
   .quiz-card-meta{display:flex;gap:5px;flex-wrap:wrap;}
   .meta-pill{font-size:.69rem;padding:2px 8px;border-radius:999px;font-weight:500;background:var(--surface2);color:var(--text-muted);}
-  .meta-pill.blue{background:rgba(91,106,240,.13);color:var(--accent);}
-  .meta-pill.green{background:rgba(62,207,142,.13);color:var(--accent3);}
+  .meta-pill.blue{background:rgba(240,192,48,.13);color:var(--gold);}
+  .meta-pill.green{background:rgba(76,175,125,.13);color:var(--accent3);}
   .quiz-card-actions{display:flex;gap:5px;flex-wrap:wrap;padding-top:4px;border-top:1px solid var(--border);}
   .empty-list{grid-column:1/-1;text-align:center;padding:42px 20px;background:var(--surface);border:1px dashed var(--border);border-radius:var(--radius);color:var(--text-muted);}
   .empty-list .ei{font-size:2rem;opacity:.3;margin-bottom:9px;}
@@ -77,7 +81,7 @@
   .tl-label{font-size:.73rem;font-weight:600;text-transform:uppercase;letter-spacing:.06em;color:var(--text-muted);display:block;margin-bottom:9px;}
   .timeline-track{position:relative;height:6px;background:var(--border);border-radius:999px;margin:7px 0;}
   .timeline-markers{position:relative;height:6px;}
-  .timeline-marker{position:absolute;top:-7px;transform:translateX(-50%);width:20px;height:20px;border-radius:50%;background:var(--accent);border:2px solid var(--bg);cursor:pointer;transition:transform .15s;display:flex;align-items:center;justify-content:center;font-size:9px;color:#fff;font-weight:700;z-index:2;}
+  .timeline-marker{position:absolute;top:-7px;transform:translateX(-50%);width:20px;height:20px;border-radius:50%;background:var(--accent);border:2px solid var(--bg);cursor:pointer;transition:transform .15s;display:flex;align-items:center;justify-content:center;font-size:9px;color:var(--blue);font-weight:700;z-index:2;}
   .timeline-marker:hover{transform:translateX(-50%) scale(1.3);}
   .timeline-marker.open{background:var(--accent2);}
   .time-labels{display:flex;justify-content:space-between;font-size:.67rem;color:var(--text-muted);margin-top:3px;}
@@ -130,7 +134,7 @@
   .quiz-feedback.wrong{background:rgba(224,91,138,.1);color:var(--accent2);border:1px solid rgba(224,91,138,.25);}
   .quiz-feedback.open{background:rgba(91,106,240,.1);color:var(--accent);border:1px solid rgba(91,106,240,.25);}
   .player-progress{width:100%;height:3px;background:var(--border);border-radius:999px;margin-bottom:5px;overflow:hidden;}
-  .player-progress-fill{height:100%;background:var(--accent);border-radius:999px;transition:width .5s;}
+  .player-progress-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold-dark));border-radius:999px;transition:width .5s;}
   .player-time-info{font-size:.71rem;color:var(--text-muted);margin-bottom:11px;}
 
   .summary-box{background:var(--surface2);border:1px solid var(--border);border-radius:var(--radius);padding:17px;margin-top:15px;}
@@ -144,7 +148,7 @@
   .dashboard-sub{color:var(--text-muted);font-size:.79rem;margin-bottom:20px;}
   .stats-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(145px,1fr));gap:10px;margin-bottom:20px;}
   .stat-card{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);padding:15px;}
-  .stat-value{font-family:'Syne',sans-serif;font-size:1.7rem;font-weight:800;color:var(--accent);line-height:1;}
+  .stat-value{font-family:'Syne',sans-serif;font-size:1.7rem;font-weight:800;color:var(--gold);line-height:1;}
   .stat-label{font-size:.72rem;color:var(--text-muted);margin-top:4px;}
   .results-wrap{background:var(--surface);border:1px solid var(--border);border-radius:var(--radius);overflow:hidden;}
   .results-table{width:100%;border-collapse:collapse;}
@@ -178,9 +182,9 @@
   /* NAME PROMPT */
   .name-overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,.78);backdrop-filter:blur(4px);z-index:200;align-items:center;justify-content:center;}
   .name-overlay.open{display:flex;}
-  .name-box{background:var(--surface);border:1px solid var(--border);border-radius:16px;padding:27px;max-width:360px;width:90%;text-align:center;animation:slideUp .22s ease;}
-  .name-box h2{font-family:'Syne',sans-serif;font-size:1.08rem;font-weight:800;margin-bottom:6px;}
-  .name-box p{color:var(--text-muted);font-size:.79rem;margin-bottom:15px;line-height:1.5;}
+  .name-box{background:var(--surface);border:1px solid var(--border);border-top:4px solid var(--gold);border-radius:16px;padding:28px;max-width:380px;width:90%;text-align:center;animation:slideUp .22s ease;box-shadow:0 8px 40px rgba(0,0,0,.5);}
+  .name-box h2{font-family:'Syne',sans-serif;font-size:1.1rem;font-weight:800;margin-bottom:6px;}
+  .name-box p{color:var(--text-muted);font-size:.79rem;margin-bottom:16px;line-height:1.5;}
   .name-input{width:100%;padding:10px 13px;background:var(--surface2);border:1px solid var(--border);border-radius:9px;color:var(--text);font-family:'DM Sans',sans-serif;font-size:.93rem;outline:none;margin-bottom:11px;text-align:center;}
   .name-input:focus{border-color:var(--accent);}
 
@@ -204,7 +208,20 @@
 <!-- HOME -->
 <div id="screen-home" class="screen active">
   <header>
-    <div class="logo">Video<span>Quiz</span><em>+</em></div>
+    <div class="logo">
+      <svg class="logo-shield" width="36" height="36" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M18 2L4 8V18C4 25.5 10.5 32.3 18 34C25.5 32.3 32 25.5 32 18V8L18 2Z" fill="#f0c030"/>
+        <path d="M18 5L7 10V18C7 24.2 12 30.1 18 31.5C24 30.1 29 24.2 29 18V10L18 5Z" fill="#1a3a6b"/>
+        <path d="M14 17L17 20L23 14" stroke="#f0c030" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+        <path d="M18 10V13M18 13C18 13 15 14.5 15 17C15 19.5 18 21 18 21C18 21 21 19.5 21 17C21 14.5 18 13 18 13Z" stroke="#f0c030" stroke-width="1.3" stroke-linecap="round" opacity="0.5"/>
+      </svg>
+      <div class="logo-text">
+        <span class="logo-name">Chavigny</span>
+        <span class="logo-tagline">À mon image</span>
+      </div>
+      <div class="logo-sep"></div>
+      <span class="logo-app">VideoQuiz+</span>
+    </div>
     <nav><button class="nav-btn primary" onclick="createNewQuiz()">✏️ Nouveau quiz</button></nav>
   </header>
   <div class="home-body">
@@ -228,7 +245,7 @@
 <!-- BUILDER -->
 <div id="screen-builder" class="screen">
   <header>
-    <div class="logo" onclick="goTo('home')">Video<span>Quiz</span><em>+</em></div>
+    <div class="logo" onclick="goTo('home')"><svg width="30" height="30" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M18 2L4 8V18C4 25.5 10.5 32.3 18 34C25.5 32.3 32 25.5 32 18V8L18 2Z" fill="#f0c030"/><path d="M18 5L7 10V18C7 24.2 12 30.1 18 31.5C24 30.1 29 24.2 29 18V10L18 5Z" fill="#1a3a6b"/><path d="M14 17L17 20L23 14" stroke="#f0c030" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="logo-text"><span class="logo-name">Chavigny</span><span class="logo-tagline">À mon image</span></div><div class="logo-sep"></div><span class="logo-app">VideoQuiz+</span></div>
     <nav>
       <button class="nav-btn" onclick="goTo('home')">← Mes quiz</button>
       <button class="nav-btn" onclick="previewCurrentQuiz()">▶ Tester</button>
@@ -272,7 +289,7 @@
 <!-- PLAYER -->
 <div id="screen-player" class="screen">
   <header>
-    <div class="logo">Video<span>Quiz</span><em>+</em></div>
+    <div class="logo"><svg width="30" height="30" viewBox="0 0 36 36" fill="none"><path d="M18 2L4 8V18C4 25.5 10.5 32.3 18 34C25.5 32.3 32 25.5 32 18V8L18 2Z" fill="#f0c030"/><path d="M18 5L7 10V18C7 24.2 12 30.1 18 31.5C24 30.1 29 24.2 29 18V10L18 5Z" fill="#1a3a6b"/><path d="M14 17L17 20L23 14" stroke="#f0c030" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="logo-text"><span class="logo-name">Chavigny</span><span class="logo-tagline">À mon image</span></div><div class="logo-sep"></div><span class="logo-app">VideoQuiz+</span></div>
     <nav id="player-nav"></nav>
   </header>
   <div class="player-body">
@@ -304,7 +321,7 @@
 <!-- DASHBOARD -->
 <div id="screen-dashboard" class="screen">
   <header>
-    <div class="logo" onclick="stopVideo();goTo('home')">Video<span>Quiz</span><em>+</em></div>
+    <div class="logo" onclick="stopVideo();goTo('home')"><svg width="30" height="30" viewBox="0 0 36 36" fill="none"><path d="M18 2L4 8V18C4 25.5 10.5 32.3 18 34C25.5 32.3 32 25.5 32 18V8L18 2Z" fill="#f0c030"/><path d="M18 5L7 10V18C7 24.2 12 30.1 18 31.5C24 30.1 29 24.2 29 18V10L18 5Z" fill="#1a3a6b"/><path d="M14 17L17 20L23 14" stroke="#f0c030" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></svg><div class="logo-text"><span class="logo-name">Chavigny</span><span class="logo-tagline">À mon image</span></div><div class="logo-sep"></div><span class="logo-app">VideoQuiz+</span></div>
     <nav>
       <button class="nav-btn" onclick="stopVideo();goTo('builder')">← Retour à l'édition</button>
       <button class="nav-btn danger" onclick="clearResults()">🗑 Effacer résultats</button>
@@ -327,7 +344,11 @@
 <!-- LOGIN PROMPT -->
 <div class="name-overlay" id="name-overlay">
   <div class="name-box">
-    <div style="font-size:1.9rem;margin-bottom:9px">🎓</div>
+    <svg width="52" height="52" viewBox="0 0 36 36" fill="none" xmlns="http://www.w3.org/2000/svg" style="margin:0 auto 12px;display:block">
+      <path d="M18 2L4 8V18C4 25.5 10.5 32.3 18 34C25.5 32.3 32 25.5 32 18V8L18 2Z" fill="#f0c030"/>
+      <path d="M18 5L7 10V18C7 24.2 12 30.1 18 31.5C24 30.1 29 24.2 29 18V10L18 5Z" fill="#1a3a6b"/>
+      <path d="M14 17L17 20L23 14" stroke="#f0c030" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>
+    </svg>
     <h2 id="login-title">Connexion requise</h2>
     <p id="login-desc">Connectez-vous avec votre compte Google scolaire pour accéder au quiz.</p>
 

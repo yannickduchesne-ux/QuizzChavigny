@@ -314,6 +314,11 @@ label{display:block;font-size:.76rem;color:var(--text-soft);margin-bottom:3px;fo
             <input class="url-input" id="yt-url" type="text" placeholder="Lien YouTube... ex: https://www.youtube.com/watch?v=XXXXXXX">
             <button class="btn btn-primary btn-sm" onclick="loadVideo()">Charger</button>
           </div>
+          <div style="display:flex;align-items:center;gap:8px;margin-top:6px;">
+            <span style="font-size:.75rem;color:var(--text-muted)">⏱ Durée totale de la vidéo :</span>
+            <input class="trim-input" id="video-duration-input" type="text" placeholder="mm:ss" onchange="saveVideoDuration()" style="width:80px;">
+            <span style="font-size:.72rem;color:var(--text-muted)">(pour calibrer la timeline)</span>
+          </div>
           <div class="trim-row" style="margin-top:8px;">
             <span class="trim-label">✂️ Extrait :</span>
             <span class="trim-label">De</span>
@@ -437,7 +442,7 @@ label{display:block;font-size:.76rem;color:var(--text-soft);margin-bottom:3px;fo
     <div id="login-google-section">
       <div id="g_id_onload" data-client_id="717406017938-av5n3n48s5o0b472ulcl39q41kvoi0im.apps.googleusercontent.com" data-callback="handleGoogleSignIn" data-auto_prompt="false"></div>
       <div class="g_id_signin" data-type="standard" data-size="large" data-theme="filled_blue" data-text="signin_with" data-shape="rectangular" data-locale="fr" data-width="300"></div>
-      <div style="margin-top:11px;font-size:.7rem;color:var(--text-muted);line-height:1.5">ex: jtremblay@csduroy.qc.ca</div>
+      <div style="margin-top:11px;font-size:.7rem;color:var(--text-muted);line-height:1.5">ex: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="f49e808691999698958db497879081869b8dda8597da9795">[email&#160;protected]</a></div>
     </div>
     <div id="login-confirm-section" style="display:none">
       <div style="background:var(--surface2);border:1px solid var(--border);border-radius:9px;padding:12px;margin-bottom:12px;display:flex;align-items:center;gap:10px;">
@@ -515,7 +520,7 @@ label{display:block;font-size:.76rem;color:var(--text-soft);margin-bottom:3px;fo
 
 <div class="toast" id="toast"></div>
 
-<script src="https://accounts.google.com/gsi/client" async defer></script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://accounts.google.com/gsi/client" async defer></script>
 <script src="https://www.youtube.com/iframe_api"></script>
 <script>
 // ─── CONSTANTS ───
@@ -679,6 +684,8 @@ function switchSource(type){
 function openBuilder(quiz){
   document.getElementById('quiz-title-input').value=quiz.title||'';
   document.getElementById('yt-url').value=quiz.videoId?`https://www.youtube.com/watch?v=${quiz.videoId}`:'';
+  const durEl=document.getElementById('video-duration-input');
+  if(durEl)durEl.value=quiz.videoDuration&&quiz.videoDuration!==300?fmt(quiz.videoDuration):'';
   const opts=quiz.options||{};
   setToggle('toggle-block-skip',opts.blockSkip);
   setToggle('toggle-block-rewind',opts.blockRewind);
@@ -721,7 +728,15 @@ function loadVideo(){
   if(!id){alert('URL YouTube invalide.');return;}
   const quiz=getQuizLocal(currentQuizId);quiz.videoId=id;quiz.updatedAt=Date.now();saveQuizLocal(quiz);
   document.getElementById('video-container').innerHTML=`<iframe src="https://www.youtube.com/embed/${id}?rel=0" allowfullscreen style="width:100%;height:100%;border:none;"></iframe>`;
-  renderTimeline();showToast('✅ Vidéo chargée !');
+  renderTimeline();showToast('✅ Vidéo chargée ! Entrez la durée ci-dessus pour calibrer la timeline.');
+}
+function saveVideoDuration(){
+  const quiz=getQuizLocal(currentQuizId);if(!quiz)return;
+  const val=document.getElementById('video-duration-input').value.trim();
+  if(!val)return;
+  quiz.videoDuration=parseTime(val);
+  quiz.updatedAt=Date.now();saveQuizLocal(quiz);
+  renderTimeline();showToast('✅ Durée mise à jour !');
 }
 function autosave(){if(currentQuizId)autosaveFor(currentQuizId);}
 function autosaveFor(id){
@@ -1169,12 +1184,4 @@ function checkUrlParams(){
 function extractYTId(url){const m=url.match(/(?:youtube\.com\/(?:watch\?(?:.*&)?v=|embed\/|v\/)|youtu\.be\/)([a-zA-Z0-9_-]{11})/);return m?m[1]:null;}
 function fmt(sec){sec=Math.floor(sec||0);return `${Math.floor(sec/60)}:${(sec%60).toString().padStart(2,'0')}`;}
 function parseTime(str){str=String(str).trim();const p=str.split(':');return p.length===2?parseInt(p[0])*60+(parseInt(p[1])||0):parseInt(str)||30;}
-function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);}
-
-// ─── INIT ───
-renderHome();
-if(document.readyState==='complete')checkUrlParams();
-else window.addEventListener('load',checkUrlParams);
-</script>
-</body>
-</html>
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add(

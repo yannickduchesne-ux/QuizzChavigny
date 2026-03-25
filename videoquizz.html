@@ -385,6 +385,22 @@
 
 <script src="https://www.youtube.com/iframe_api"></script>
 <script>
+// ─── GOOGLE SHEETS ───
+const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbycR7BoPUnyfuAa6QDk2ofdm12w5Fo9sW3gC78fYGLj76LAsEThWbbJ4YAp0BebdrIf/exec';
+
+async function sendToGoogleSheets(studentName, quizTitle, results) {
+  try {
+    await fetch(SHEETS_URL, {
+      method: 'POST',
+      mode: 'no-cors',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ studentName, quizTitle, results })
+    });
+  } catch(e) {
+    console.warn('Envoi Google Sheets échoué:', e);
+  }
+}
+
 // ─── STORAGE (quiz list locale pour l'enseignant) ───
 function getAllQuizzes(){try{return JSON.parse(localStorage.getItem('vq_quizzes')||'{}');}catch(e){return{};}}
 function saveAllQuizzes(d){localStorage.setItem('vq_quizzes',JSON.stringify(d));}
@@ -823,13 +839,23 @@ function showStudentSummary(){
   const correct=sessionResults.filter(r=>r.status==='correct').length;
   const qcm=sessionResults.filter(r=>r.status!=='open').length;
   const pct=qcm>0?Math.round(correct/qcm*100):null;
+
+  // Envoyer les résultats au Google Sheet de l'enseignant
+  sendToGoogleSheets(playerName, activeQuiz.title||'Sans titre', sessionResults);
+
   const rows=sessionResults.map(r=>`
     <div class="summary-row">
       <span style="flex:1;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;padding-right:10px">${r.question}</span>
       <span>${r.status==='correct'?'<span class="pill-correct">✅ Correct</span>':r.status==='wrong'?'<span class="pill-wrong">❌ Incorrect</span>':'<span class="pill-open">📝 Enregistré</span>'}</span>
     </div>`).join('');
   const s=document.getElementById('student-summary');
-  s.innerHTML=`<div class="summary-box"><div class="summary-title">🎉 Terminé, ${playerName} !${pct!==null?` — Score : <span style="color:var(--accent3)">${pct}%</span>`:''}</div>${rows}</div>`;
+  s.innerHTML=`<div class="summary-box">
+    <div class="summary-title">🎉 Terminé, ${playerName} !${pct!==null?` — Score : <span style="color:var(--accent3)">${pct}%</span>`:''}</div>
+    ${rows}
+    <div style="margin-top:12px;padding-top:10px;border-top:1px solid var(--border);font-size:.75rem;color:var(--text-muted)">
+      ✅ Vos résultats ont été envoyés à votre enseignant.
+    </div>
+  </div>`;
   s.style.display='block';
 }
 

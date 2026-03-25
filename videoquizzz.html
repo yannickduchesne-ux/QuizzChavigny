@@ -532,16 +532,23 @@ function genId(){return Date.now().toString(36)+Math.random().toString(36).slice
 function encodeQuizForUrl(quiz){
   try{
     const data=JSON.stringify({id:quiz.id,title:quiz.title,videoId:quiz.videoId,videoDuration:quiz.videoDuration,questions:quiz.questions});
-    return btoa(unescape(encodeURIComponent(data))).replace(/\+/g,'-').replace(/\//g,'_').replace(/=/g,'');
+    // Encoder en base64 simple, puis encoder les caractères spéciaux pour l'URL
+    return encodeURIComponent(btoa(unescape(encodeURIComponent(data))));
   }catch(e){return null;}
 }
 function decodeQuizFromUrl(str){
   try{
-    // pad base64
-    let s=str.replace(/-/g,'+').replace(/_/g,'/');
-    while(s.length%4)s+='=';
-    return JSON.parse(decodeURIComponent(escape(atob(s))));
-  }catch(e){return null;}
+    // Décoder l'URL encoding d'abord, puis le base64
+    const base64=decodeURIComponent(str);
+    return JSON.parse(decodeURIComponent(escape(atob(base64))));
+  }catch(e){
+    // Fallback : essayer aussi le format base64url (ancien format)
+    try{
+      let s=str.replace(/-/g,'+').replace(/_/g,'/');
+      while(s.length%4)s+='=';
+      return JSON.parse(decodeURIComponent(escape(atob(s))));
+    }catch(e2){return null;}
+  }
 }
 function buildShareUrl(quiz){
   autosave();
@@ -1015,21 +1022,56 @@ function checkUrlParams(){
   const params=new URLSearchParams(window.location.search);
   const encoded=params.get('q');
   if(!encoded)return;
-  // Mode élève : décoder le quiz depuis l'URL
-  const quiz=decodeQuizFromUrl(encoded);
+
+  let quiz=null;
+  // Essayer les deux formats d'encodage
+  try{
+    const base64=decodeURIComponent(encoded);
+    quiz=JSON.parse(decodeURIComponent(escape(atob(base64))));
+  }catch(e){
+    try{
+      let s=encoded.replace(/-/g,'+').replace(/_/g,'/');
+      while(s.length%4)s+='=';
+      quiz=JSON.parse(decodeURIComponent(escape(atob(s))));
+    }catch(e2){ quiz=null; }
+  }
+
   if(!quiz||!quiz.videoId||!quiz.questions?.length){
-    document.body.innerHTML=`<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;gap:16px;text-align:center;padding:20px;background:#0d0f14;color:#eef0f8;font-family:'DM Sans',sans-serif">
+    // Remplacer toute la page par le message d'erreur
+    document.body.innerHTML=`<div style="display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:100vh;gap:16px;text-align:center;padding:20px;background:#0d0f14;color:#eef0f8;font-family:sans-serif">
       <div style="font-size:3rem">⚠️</div>
-      <div style="font-family:'Syne',sans-serif;font-size:1.4rem;font-weight:800">Lien invalide</div>
-      <div style="color:#6b7280;font-size:.9rem;max-width:340px;line-height:1.6">Ce lien de quiz semble corrompu ou incomplet. Demandez un nouveau lien à votre enseignant.</div>
+      <div style="font-size:1.4rem;font-weight:800">Lien invalide</div>
+      <div style="color:#6b7280;font-size:.9rem;max-width:340px;line-height:1.6">Ce lien de quiz semble corrompu. Demandez un nouveau lien à votre enseignant.</div>
     </div>`;
     return;
   }
+
+  // Masquer TOUS les écrans
+  document.querySelectorAll('.screen').forEach(s=>s.classList.remove('active'));
+
   activeQuiz=quiz;
   currentQuizId=quiz.id||'student_'+genId();
   isStudentMode=true;
-  // Masquer l'écran home, aller directement au quiz
-  openNamePrompt();
+
+  // Afficher directement le login
+  googleUser=null;
+  document.getElementById('login-google-section').style.display='block';
+  document.getElementById('login-confirm-section').style.display='none';
+  document.getElementById('login-title').textContent='Connexion requise';
+  document.getElementById('login-desc').textContent='Connectez-vous avec votre compte Google scolaire pour accéder au quiz.';
+  document.getElementById('name-overlay').classList.add('open');
+
+  // Initialiser le bouton Google (avec retry)
+  function initGoogleBtn(){
+    try{
+      google.accounts.id.initialize({client_id:GOOGLE_CLIENT_ID,callback:handleGoogleSignIn});
+      google.accounts.id.renderButton(
+        document.querySelector('.g_id_signin'),
+        {theme:'filled_blue',size:'large',locale:'fr',width:300}
+      );
+    }catch(e){ setTimeout(initGoogleBtn,300); }
+  }
+  initGoogleBtn();
 }
 
 // ─── UTILS ───

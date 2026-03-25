@@ -324,14 +324,46 @@
   </div>
 </div>
 
-<!-- NAME PROMPT -->
+<!-- LOGIN PROMPT -->
 <div class="name-overlay" id="name-overlay">
   <div class="name-box">
-    <div style="font-size:1.9rem;margin-bottom:9px">👤</div>
-    <h2>Entrez votre prénom</h2>
-    <p>Il apparaîtra dans le tableau de bord pour identifier vos réponses.</p>
-    <input class="name-input" id="name-input" type="text" placeholder="Votre prénom..." maxlength="40">
-    <button class="btn btn-primary" style="width:100%" onclick="confirmName()">Commencer ▶</button>
+    <div style="font-size:1.9rem;margin-bottom:9px">🎓</div>
+    <h2 id="login-title">Connexion requise</h2>
+    <p id="login-desc">Connectez-vous avec votre compte Google scolaire pour accéder au quiz.</p>
+
+    <!-- État : non connecté -->
+    <div id="login-google-section">
+      <div id="g_id_onload"
+        data-client_id="717406017938-av5n3n48s5o0b472ulcl39q41kvoi0im.apps.googleusercontent.com"
+        data-callback="handleGoogleSignIn"
+        data-auto_prompt="false">
+      </div>
+      <div class="g_id_signin"
+        data-type="standard"
+        data-size="large"
+        data-theme="filled_blue"
+        data-text="signin_with"
+        data-shape="rectangular"
+        data-locale="fr"
+        data-width="300">
+      </div>
+      <div style="margin-top:14px;font-size:.72rem;color:var(--text-muted);line-height:1.5">
+        Utilisez votre adresse scolaire<br>ex: <a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="a9c3dddbccc4cbc5c8d0e9cadacddcdbc6d087d8ca87cac8">[email&#160;protected]</a>
+      </div>
+    </div>
+
+    <!-- État : connecté, confirmation -->
+    <div id="login-confirm-section" style="display:none">
+      <div style="background:var(--surface2);border:1px solid var(--border);border-radius:10px;padding:14px;margin-bottom:14px;display:flex;align-items:center;gap:12px;">
+        <img id="login-avatar" src="" alt="" style="width:40px;height:40px;border-radius:50%;display:none;">
+        <div style="text-align:left;">
+          <div id="login-fullname" style="font-weight:600;font-size:.9rem;"></div>
+          <div id="login-email" style="font-size:.76rem;color:var(--text-muted);"></div>
+        </div>
+      </div>
+      <button class="btn btn-primary" style="width:100%" onclick="confirmGoogleUser()">Commencer le quiz ▶</button>
+      <button class="btn btn-ghost btn-sm" style="width:100%;margin-top:6px" onclick="resetGoogleLogin()">← Changer de compte</button>
+    </div>
   </div>
 </div>
 
@@ -383,18 +415,94 @@
 
 <div class="toast" id="toast"></div>
 
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script src="https://accounts.google.com/gsi/client" async defer></script>
 <script src="https://www.youtube.com/iframe_api"></script>
 <script>
+// ─── GOOGLE CLIENT ID ───
+// ⚠️ Remplacez cette valeur par votre vrai Client ID Google (voir instructions ci-dessous)
+const GOOGLE_CLIENT_ID = '717406017938-av5n3n48s5o0b472ulcl39q41kvoi0im.apps.googleusercontent.com';
+
+// ─── GOOGLE SIGN-IN ───
+let googleUser = null; // { name, email, picture }
+
+function handleGoogleSignIn(response) {
+  try {
+    // Décoder le JWT token retourné par Google
+    const payload = JSON.parse(atob(response.credential.split('.')[1]));
+    googleUser = {
+      name: payload.name,
+      email: payload.email,
+      picture: payload.picture || ''
+    };
+    // Afficher la section de confirmation
+    document.getElementById('login-google-section').style.display = 'none';
+    document.getElementById('login-confirm-section').style.display = 'block';
+    document.getElementById('login-fullname').textContent = googleUser.name;
+    document.getElementById('login-email').textContent = googleUser.email;
+    if (googleUser.picture) {
+      const img = document.getElementById('login-avatar');
+      img.src = googleUser.picture;
+      img.style.display = 'block';
+    }
+  } catch(e) {
+    console.error('Erreur Google Sign-In:', e);
+    showToast('⚠️ Erreur de connexion, réessayez.');
+  }
+}
+
+function confirmGoogleUser() {
+  if (!googleUser) return;
+  playerName = googleUser.name;
+  playerEmail = googleUser.email;
+  document.getElementById('name-overlay').classList.remove('open');
+  startPlayer();
+}
+
+function resetGoogleLogin() {
+  googleUser = null;
+  document.getElementById('login-google-section').style.display = 'block';
+  document.getElementById('login-confirm-section').style.display = 'none';
+  google.accounts.id.disableAutoSelect();
+}
+
+function openNamePrompt() {
+  googleUser = null;
+  document.getElementById('login-google-section').style.display = 'block';
+  document.getElementById('login-confirm-section').style.display = 'none';
+  // Ajuster le titre selon le mode
+  if (isStudentMode) {
+    document.getElementById('login-title').textContent = 'Connexion requise';
+    document.getElementById('login-desc').textContent = 'Connectez-vous avec votre compte Google scolaire pour accéder au quiz.';
+  } else {
+    document.getElementById('login-title').textContent = 'Tester le quiz';
+    document.getElementById('login-desc').textContent = 'Connectez-vous pour tester le quiz en mode enseignant.';
+  }
+  document.getElementById('name-overlay').classList.add('open');
+  // Réinitialiser le bouton Google Sign-In
+  setTimeout(() => {
+    try {
+      google.accounts.id.initialize({
+        client_id: GOOGLE_CLIENT_ID,
+        callback: handleGoogleSignIn
+      });
+      google.accounts.id.renderButton(
+        document.querySelector('.g_id_signin'),
+        { theme: 'filled_blue', size: 'large', locale: 'fr', width: 300 }
+      );
+    } catch(e) {}
+  }, 100);
+}
+
 // ─── GOOGLE SHEETS ───
 const SHEETS_URL = 'https://script.google.com/macros/s/AKfycbycR7BoPUnyfuAa6QDk2ofdm12w5Fo9sW3gC78fYGLj76LAsEThWbbJ4YAp0BebdrIf/exec';
 
-async function sendToGoogleSheets(studentName, quizTitle, results) {
+async function sendToGoogleSheets(studentName, studentEmail, quizTitle, results) {
   try {
     await fetch(SHEETS_URL, {
       method: 'POST',
       mode: 'no-cors',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ studentName, quizTitle, results })
+      body: JSON.stringify({ studentName, studentEmail, quizTitle, results })
     });
   } catch(e) {
     console.warn('Envoi Google Sheets échoué:', e);
@@ -445,6 +553,7 @@ let editingQIdx=null;
 let pendingType='choix';
 let pendingTime=30;
 let playerName='';
+let playerEmail='';
 let ytPlayer=null;
 let ytReady=false;
 let pendingPlay=false;
@@ -686,14 +795,7 @@ function openNamePrompt(){
   document.getElementById('name-overlay').classList.add('open');
   setTimeout(()=>document.getElementById('name-input').focus(),100);
 }
-function confirmName(){
-  const name=document.getElementById('name-input').value.trim();
-  if(!name){document.getElementById('name-input').focus();return;}
-  playerName=name;
-  document.getElementById('name-overlay').classList.remove('open');
-  startPlayer();
-}
-document.getElementById('name-input').addEventListener('keydown',e=>{if(e.key==='Enter')confirmName();});
+// (connexion gérée par Google Sign-In — voir handleGoogleSignIn / confirmGoogleUser)
 
 // ─── PLAYER ───
 function onYouTubeIframeAPIReady(){if(pendingPlay)initYTPlayer();}
@@ -841,7 +943,7 @@ function showStudentSummary(){
   const pct=qcm>0?Math.round(correct/qcm*100):null;
 
   // Envoyer les résultats au Google Sheet de l'enseignant
-  sendToGoogleSheets(playerName, activeQuiz.title||'Sans titre', sessionResults);
+  sendToGoogleSheets(playerName, playerEmail, activeQuiz.title||'Sans titre', sessionResults);
 
   const rows=sessionResults.map(r=>`
     <div class="summary-row">
@@ -864,7 +966,7 @@ function renderDashboard(){
   const quiz=getQuizLocal(currentQuizId);
   const results=getResults(currentQuizId);
   document.getElementById('dash-title').textContent=`📊 ${quiz?.title||'Tableau de bord'}`;
-  document.getElementById('dash-sub').textContent=`${results.length} réponse(s) enregistrée(s) lors des tests sur cet appareil`;
+  document.getElementById('dash-sub').textContent=`${results.length} réponse(s) — Consultez aussi votre Google Sheet pour les résultats des élèves`;
   const correct=results.filter(r=>r.status==='correct').length;
   const wrong=results.filter(r=>r.status==='wrong').length;
   const pct=(correct+wrong)>0?Math.round(correct/(correct+wrong)*100):0;
@@ -934,11 +1036,4 @@ function extractYTId(url){
 }
 function fmt(sec){sec=Math.floor(sec||0);return `${Math.floor(sec/60)}:${(sec%60).toString().padStart(2,'0')}`;}
 function parseTime(str){str=String(str).trim();const p=str.split(':');return p.length===2?parseInt(p[0])*60+(parseInt(p[1])||0):parseInt(str)||30;}
-function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);}
-
-// ─── INIT ───
-renderHome();
-checkUrlParams();
-</script>
-</body>
-</html>
+function s

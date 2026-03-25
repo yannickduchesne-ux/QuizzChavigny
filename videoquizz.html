@@ -1036,4 +1036,11 @@ function extractYTId(url){
 }
 function fmt(sec){sec=Math.floor(sec||0);return `${Math.floor(sec/60)}:${(sec%60).toString().padStart(2,'0')}`;}
 function parseTime(str){str=String(str).trim();const p=str.split(':');return p.length===2?parseInt(p[0])*60+(parseInt(p[1])||0):parseInt(str)||30;}
-function s
+function showToast(msg){const t=document.getElementById('toast');t.textContent=msg;t.classList.add('show');setTimeout(()=>t.classList.remove('show'),3000);}
+
+// ─── INIT ───
+renderHome();
+checkUrlParams();
+</script>
+</body>
+</html>
